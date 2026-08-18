@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — KshirSetu</title>
+<title>KshirSetu — Milk distribution management</title>
+<meta name="description" content="KshirSetu is management software for milk distributors and the retailers they supply — daily orders, deposits, account statements and GST invoices.">
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -12,13 +13,20 @@
     font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     color: #1a1a1a; background: #fff;
   }
-  header { border-bottom: 3px solid #0B3C93; padding-bottom: 1rem; margin-bottom: 2rem; }
-  h1 { font-size: 1.6rem; margin: 0 0 .35rem; color: #0B3C93; }
-  .updated { color: #666; font-size: .9rem; margin: 0; }
+  header { border-bottom: 3px solid #0B3C93; padding-bottom: 1.2rem; margin-bottom: 2rem; }
+  h1 { font-size: 1.9rem; margin: 0 0 .4rem; color: #0B3C93; letter-spacing: -.01em; }
+  .tagline { color: #444; font-size: 1.05rem; margin: 0; }
   h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; color: #0B3C93; }
-  h3 { font-size: 1rem; margin: 1.4rem 0 .3rem; }
   ul { padding-left: 1.3rem; }
-  li { margin: .3rem 0; }
+  li { margin: .35rem 0; }
+  .cards { display: grid; gap: 1rem; grid-template-columns: 1fr; margin: 1.2rem 0; }
+  @media (min-width: 34rem) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card {
+    border: 1px solid #dde4ee; border-radius: 6px;
+    padding: 1rem 1.1rem; background: #fbfcfe;
+  }
+  .card h3 { margin: 0 0 .4rem; font-size: 1rem; color: #0B3C93; }
+  .card p { margin: 0; font-size: .95rem; }
   .contact {
     background: #f4f8fd; border-left: 4px solid #0B3C93;
     padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 4px;
@@ -26,12 +34,20 @@
   .contact p { margin: .25rem 0; }
   a { color: #0B3C93; }
   strong { color: #000; }
+  footer {
+    margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #dde4ee;
+    font-size: .92rem; color: #666;
+  }
+  footer a { margin-right: 1.2rem; }
   @media (prefers-color-scheme: dark) {
     body { color: #e6e6e6; background: #121212; }
     h1, h2 { color: #7fb0ff; }
+    .tagline { color: #bbb; }
     strong { color: #fff; }
     .contact { background: #182534; border-left-color: #7fb0ff; }
-    .updated { color: #999; }
+    .card { background: #171b21; border-color: #2b3440; }
+    .card h3 { color: #7fb0ff; }
+    footer { border-top-color: #2b3440; color: #999; }
     a { color: #7fb0ff; }
   }
 </style>
@@ -39,25 +55,52 @@
 <body>
 
 <header>
-  <h1>Privacy Policy for KshirSetu</h1>
-  <p class="updated">Last updated: 2 August 2026</p>
+  <h1>KshirSetu</h1>
+  <p class="tagline">Management software for milk distributors and the retailers they supply.</p>
 </header>
 
-<p>KshirSetu (&ldquo;the app&rdquo;) is a business application for milk retailers to
-manage their daily orders, deposits and account statements with their milk
-distributor. This policy explains what information the app handles and why.</p>
+<p>Milk moves early and on credit. A distributor sends out loaded vehicles before
+dawn, and by the end of the month owes an answer to every retailer about what was
+delivered, what was paid, and what is still outstanding. KshirSetu keeps that
+record straight for both sides.</p>
 
-<p>KshirSetu is not a consumer app. It is issued to retailers who already have a
-business relationship with a milk distributor, and an account is created for the
-retailer by that distributor.</p>
+<h2>Who it is for</h2>
 
-<h2>Who is responsible for your data</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Milk distributors</h3>
+    <p>A web system for the office — daily demand, trip-wise loading, deposits,
+    retailer ledgers, GST invoices and staff accounts.</p>
+  </div>
+  <div class="card">
+    <h3>Retailers</h3>
+    <p>An Android app for the shop — place tomorrow&rsquo;s order, record a deposit,
+    and see an up-to-date account statement in Hindi or English.</p>
+  </div>
+</div>
 
-<p>Your milk distributor is responsible for the retailer records in the app. The
-app connects to the system operated by the distributor whose dairy code you
-enter when you first open it.</p>
+<h2>What the system covers</h2>
 
-<p>For any question about your data, contact:</p>
+<ul>
+  <li><strong>Daily demand</strong> — retailers place orders before a cut-off, and the office sees the day&rsquo;s total by product and by delivery trip.</li>
+  <li><strong>Loading and distribution</strong> — what each vehicle carries on each trip, against the capacity it actually has.</li>
+  <li><strong>Deposits</strong> — a retailer records a payment with its reference, and the office approves it against the bank statement.</li>
+  <li><strong>Account statements</strong> — a running daily ledger per retailer, sent as a PDF by email or WhatsApp.</li>
+  <li><strong>GST invoices</strong> — per-zone invoice numbering and Tally-compatible export.</li>
+  <li><strong>Notifications</strong> — order reminders and account messages to the retailer&rsquo;s phone.</li>
+</ul>
+
+<h2>How to get it</h2>
+
+<p>KshirSetu is not a consumer app. It is supplied to milk distributors, who
+create an account for each retailer they already do business with. A retailer
+opens the app, enters the dairy code given by their distributor, and signs in
+with the retailer code and password issued to them.</p>
+
+<p>Distributors interested in using KshirSetu can get in touch at the address
+below.</p>
+
+<h2>Contact</h2>
 
 <div class="contact">
   <p><strong>KshirSetu</strong></p>
@@ -66,144 +109,10 @@ enter when you first open it.</p>
   <p>New Colony, Ranipur Road, Beladullah,<br>Darbhanga, Bihar, India</p>
 </div>
 
-<h2>What information the app handles</h2>
-
-<h3>Account and identity</h3>
-<p>Your retailer code, shop name and shop address. These are created by your
-distributor from their existing business records so the app can show you the
-right account.</p>
-
-<h3>Mobile number</h3>
-<p>You can add or change your own mobile number in the app. It is used by your
-distributor to contact you about your account.</p>
-
-<h3>Email address</h3>
-<p>You can add an email address in the app if you want your distributor to be
-able to email you your invoices and account statements. This is
-<strong>optional</strong> &mdash; you can leave it blank and use the app
-normally. You can change it or remove it yourself at any time in the app, and
-it is not used to send you marketing.</p>
-
-<h3>Notifications</h3>
-<p>If you allow notifications, the app registers a notification token for your
-device with your distributor&rsquo;s system, so it can alert you when a deposit
-is approved and remind you before the order cut-off. The token identifies your
-device so the message reaches the right phone; it is not an advertising
-identifier and is not used to track you. You can turn notifications off at any
-time in your device settings, and the token is removed when you sign out.</p>
-
-<h3>Messages from your distributor</h3>
-<p>Your distributor can send you notices and reminders, which appear in the
-app&rsquo;s message list. These messages are written by your distributor. The
-app records when you last opened your messages so it can show you which ones
-are new. There is no way to reply, and the app does not read or collect any
-message you write anywhere else.</p>
-
-<h3>Deposit records and receipt images</h3>
-<p>When you record a payment, the app sends the amount, the account paid into,
-the payment reference or UTR number, and &mdash; if you choose to attach one
-&mdash; a photograph of your deposit receipt. Attaching a receipt image is
-optional. The app opens your photo gallery only when you tap to attach a
-receipt, and it reads only the single image you select. The app does not use
-your camera and does not browse or upload any other photo.</p>
-
-<h3>Business and financial records</h3>
-<p>Your milk and product orders, deposits, dues and ledger entries. This is your
-trading record with your distributor.</p>
-
-<h3>Sign-in information</h3>
-<p>Your password and the security tokens that keep you signed in are stored in
-the secure, encrypted storage provided by your device&rsquo;s operating system.
-Your password is never stored in readable form.</p>
-
-<h2>What the app does NOT do</h2>
-<ul>
-  <li>It does <strong>not</strong> collect your location.</li>
-  <li>It does <strong>not</strong> read your contacts, text messages or call
-      history.</li>
-  <li>It does <strong>not</strong> use your camera.</li>
-  <li>It does <strong>not</strong> show advertising.</li>
-  <li>It does <strong>not</strong> track you across other apps or websites.</li>
-  <li>It does <strong>not</strong> sell your information to anyone.</li>
-</ul>
-
-<h2>Why this information is needed</h2>
-<p>Your information is used only to run the milk distribution business you are
-part of:</p>
-<ul>
-  <li>to show you your own orders, deposits and account balance</li>
-  <li>to let you place a daily order and record a payment</li>
-  <li>to let your distributor confirm payments you have made</li>
-  <li>to email you your invoices and statements, if you have given an email
-      address</li>
-  <li>to notify you when a deposit is approved, or remind you before the order
-      cut-off</li>
-  <li>to keep your account secure and signed in on your device</li>
-</ul>
-<p>The app does not use your information for advertising or profiling, and does
-not make automated decisions about you.</p>
-
-<h2>Who your information is shared with</h2>
-<p>Your information is shared only with <strong>your own milk
-distributor</strong>, who already holds these business records.</p>
-<p>It is <strong>not sold, rented or shared with any other company</strong> for
-marketing.</p>
-<p>Information is stored on secure hosting operated on the distributor&rsquo;s
-behalf. These providers only store the data and may not use it for their own
-purposes. Information may also be disclosed where the law requires it.</p>
-
-<h2>How your information is protected</h2>
-<ul>
-  <li>All communication between the app and the server uses <strong>HTTPS
-      encryption</strong>.</li>
-  <li>Sign-in tokens are kept in your device&rsquo;s <strong>encrypted secure
-      storage</strong>.</li>
-  <li>Access is restricted so that you can only ever see <strong>your
-      own</strong> records.</li>
-  <li>Staff access to the wider system is limited by role, and changes to money
-      records are logged.</li>
-</ul>
-
-<h2>How long information is kept</h2>
-<p>Business records &mdash; orders, deposits and ledger entries &mdash; are kept
-by your distributor for as long as needed to run the business and to meet
-accounting and tax obligations under Indian law.</p>
-
-<h2>Your choices and your rights</h2>
-<ul>
-  <li><strong>See your data:</strong> your orders, deposits and ledger are
-      visible in the app.</li>
-  <li><strong>Correct your data:</strong> you can update your own mobile number,
-      email address and password in the app. To correct your shop name or
-      address, contact your distributor.</li>
-  <li><strong>Delete your data:</strong> to request deletion of your account,
-      contact your distributor using the details above. Trading records that
-      must be kept for accounting or tax purposes cannot be deleted, but your
-      access can be closed and your personal contact details removed.</li>
-  <li><strong>Withdraw photo access:</strong> you can turn off the app&rsquo;s
-      photo permission in your device settings at any time. You will then not be
-      able to attach receipt images, but the rest of the app will work.</li>
-  <li><strong>Turn off notifications:</strong> you can turn off notifications in
-      your device settings at any time. The rest of the app will work as
-      normal.</li>
-</ul>
-
-<h2>Children</h2>
-<p>KshirSetu is a business tool for milk retailers. It is not directed at
-children and is not intended for anyone under 18.</p>
-
-<h2>Changes to this policy</h2>
-<p>If this policy changes, the new version will be published at this address and
-the &ldquo;Last updated&rdquo; date above will change.</p>
-
-<h2>Contact</h2>
-<p>Questions or requests about your data:</p>
-
-<div class="contact">
-  <p><strong>KshirSetu</strong></p>
-  <p>Email: <a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a></p>
-  <p>Phone: <a href="tel:+918591137805">+91 85911 37805</a></p>
-</div>
+<footer>
+  <a href="./privacy.html">Privacy Policy</a>
+  <a href="./delete-account.html">Account &amp; Data Deletion</a>
+</footer>
 
 </body>
 </html>
