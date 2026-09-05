@@ -3,115 +3,386 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KshirSetu — Milk distribution management</title>
-<meta name="description" content="KshirSetu is management software for milk distributors and the retailers they supply — daily orders, deposits, account statements and GST invoices.">
+<title>KshirSetu — Software for milk distributors</title>
+<meta name="description" content="KshirSetu is management software for milk distributors and the retailers they supply — daily orders, trip loading, deposits, retailer ledgers, GST invoices and an Android app for the shop.">
+<link rel="canonical" href="https://kshirsetu.in/">
+<meta property="og:title" content="KshirSetu — Software for milk distributors">
+<meta property="og:description" content="Daily orders, trip loading, deposits, retailer ledgers and GST invoices — with an Android app for the retailers you supply.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kshirsetu.in/">
+<meta name="theme-color" content="#0B3C93">
 <style>
-  :root { color-scheme: light dark; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0 auto; padding: 2rem 1.25rem 5rem; max-width: 44rem;
-    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: #1a1a1a; background: #fff;
+  :root {
+    color-scheme: light dark;
+    --blue: #0B3C93;
+    --blue-soft: #1a5bc4;
+    --ink: #16202e;
+    --muted: #55637a;
+    --line: #dde4ee;
+    --bg: #ffffff;
+    --panel: #f7f9fc;
+    --panel-2: #eef3fb;
+    --accent: #0f8a5f;
+    --shadow: 0 1px 2px rgba(11,60,147,.06), 0 8px 24px rgba(11,60,147,.06);
   }
-  header { border-bottom: 3px solid #0B3C93; padding-bottom: 1.2rem; margin-bottom: 2rem; }
-  h1 { font-size: 1.9rem; margin: 0 0 .4rem; color: #0B3C93; letter-spacing: -.01em; }
-  .tagline { color: #444; font-size: 1.05rem; margin: 0; }
-  h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; color: #0B3C93; }
-  ul { padding-left: 1.3rem; }
-  li { margin: .35rem 0; }
-  .cards { display: grid; gap: 1rem; grid-template-columns: 1fr; margin: 1.2rem 0; }
-  @media (min-width: 34rem) { .cards { grid-template-columns: 1fr 1fr; } }
-  .card {
-    border: 1px solid #dde4ee; border-radius: 6px;
-    padding: 1rem 1.1rem; background: #fbfcfe;
-  }
-  .card h3 { margin: 0 0 .4rem; font-size: 1rem; color: #0B3C93; }
-  .card p { margin: 0; font-size: .95rem; }
-  .contact {
-    background: #f4f8fd; border-left: 4px solid #0B3C93;
-    padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 4px;
-  }
-  .contact p { margin: .25rem 0; }
-  a { color: #0B3C93; }
-  strong { color: #000; }
-  footer {
-    margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #dde4ee;
-    font-size: .92rem; color: #666;
-  }
-  footer a { margin-right: 1.2rem; }
   @media (prefers-color-scheme: dark) {
-    body { color: #e6e6e6; background: #121212; }
-    h1, h2 { color: #7fb0ff; }
-    .tagline { color: #bbb; }
-    strong { color: #fff; }
-    .contact { background: #182534; border-left-color: #7fb0ff; }
-    .card { background: #171b21; border-color: #2b3440; }
-    .card h3 { color: #7fb0ff; }
-    footer { border-top-color: #2b3440; color: #999; }
-    a { color: #7fb0ff; }
+    :root {
+      --blue: #7fb0ff;
+      --blue-soft: #9dc4ff;
+      --ink: #e7ecf3;
+      --muted: #9fadc2;
+      --line: #26303d;
+      --bg: #0f1319;
+      --panel: #151b23;
+      --panel-2: #18222f;
+      --accent: #4bd39a;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
   }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    color: var(--ink); background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+  a { color: var(--blue); }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .topbar .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding-top: .85rem; padding-bottom: .85rem;
+  }
+  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--blue); font-size: 1.1rem; letter-spacing: -.01em; }
+  .brand .mark {
+    width: 1.9rem; height: 1.9rem; border-radius: .5rem; flex: none;
+    background: var(--blue); color: #fff; display: grid; place-items: center;
+    font-size: .95rem; font-weight: 700;
+  }
+  @media (prefers-color-scheme: dark) { .brand .mark { color: #0f1319; } }
+  .topbar nav { display: flex; gap: 1.3rem; font-size: .95rem; }
+  .topbar nav a { color: var(--muted); text-decoration: none; }
+  .topbar nav a:hover { color: var(--blue); }
+  .topbar nav .nav-hide { display: none; }
+  @media (min-width: 44rem) { .topbar nav .nav-hide { display: inline; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 3.2rem 0 2.6rem; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--panel-2), var(--bg)); }
+  .hero h1 {
+    font-size: clamp(1.9rem, 5.2vw, 2.9rem); line-height: 1.15;
+    margin: 0 0 .9rem; letter-spacing: -.02em; color: var(--ink); max-width: 20ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--blue); }
+  .hero .lede { font-size: 1.12rem; color: var(--muted); margin: 0 0 1.7rem; max-width: 46ch; }
+  .cta { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .72rem 1.15rem; border-radius: .55rem;
+    font-weight: 600; font-size: .98rem; text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn-wa { background: #1faa53; color: #fff; }
+  .btn-wa:hover { background: #189146; }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--bg); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .hero .note { margin: 1.4rem 0 0; font-size: .93rem; color: var(--muted); }
+  .hero .note b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- sections ---------- */
+  section { padding: 3rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 3.6rem; }
+  h2 { font-size: 1.45rem; margin: 0 0 .5rem; letter-spacing: -.015em; color: var(--ink); }
+  .sub { color: var(--muted); margin: 0 0 1.8rem; max-width: 58ch; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .09em; font-size: .76rem;
+    font-weight: 700; color: var(--blue); margin: 0 0 .55rem;
+  }
+
+  .two { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 42rem) { .two { grid-template-columns: 1fr 1fr; } }
+  .grid3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 40rem) { .grid3 { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 58rem) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .card {
+    border: 1px solid var(--line); border-radius: .7rem;
+    padding: 1.25rem 1.3rem; background: var(--panel);
+  }
+  .card h3 { margin: 0 0 .45rem; font-size: 1.03rem; color: var(--ink); }
+  .card p { margin: 0; font-size: .96rem; color: var(--muted); }
+  .card ul { margin: .6rem 0 0; padding-left: 1.15rem; font-size: .95rem; color: var(--muted); }
+  .card li { margin: .28rem 0; }
+  .card .who {
+    display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: .5rem;
+  }
+
+  .feat h3 { display: flex; align-items: baseline; gap: .55rem; }
+  .feat h3 span.n {
+    font-size: .78rem; font-weight: 700; color: var(--blue);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- proof ---------- */
+  .proof { background: var(--panel-2); }
+  .stats { display: grid; gap: 1.4rem; grid-template-columns: 1fr; margin: 0 0 1.8rem; }
+  @media (min-width: 40rem) { .stats { grid-template-columns: repeat(3, 1fr); } }
+  .stat .num { font-size: 1.9rem; font-weight: 700; color: var(--blue); line-height: 1.1; letter-spacing: -.02em; }
+  .stat .lbl { font-size: .93rem; color: var(--muted); margin-top: .2rem; }
+  .quote {
+    border-left: 3px solid var(--blue); padding: .3rem 0 .3rem 1.1rem;
+    margin: 0; color: var(--ink); font-size: 1.02rem; max-width: 60ch;
+  }
+
+  /* ---------- steps ---------- */
+  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  ol.steps li {
+    counter-increment: s; position: relative; padding-left: 2.7rem;
+    color: var(--muted); font-size: .98rem;
+  }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 0; top: -.1rem;
+    width: 1.85rem; height: 1.85rem; border-radius: 50%;
+    background: var(--blue); color: #fff; display: grid; place-items: center;
+    font-size: .88rem; font-weight: 700;
+  }
+  @media (prefers-color-scheme: dark) { ol.steps li::before { color: #0f1319; } }
+  ol.steps li b { color: var(--ink); }
+
+  /* ---------- contact ---------- */
+  .contact-card {
+    border: 1px solid var(--line); border-radius: .8rem; background: var(--panel);
+    padding: 1.6rem 1.5rem; box-shadow: var(--shadow);
+  }
+  .rows { display: grid; gap: .9rem; margin: 1.3rem 0 0; }
+  .row { display: flex; gap: .8rem; align-items: flex-start; font-size: 1rem; }
+  .row .k { color: var(--muted); min-width: 5.2rem; font-size: .93rem; padding-top: .1rem; }
+  .row .v a { text-decoration: none; font-weight: 600; }
+  .row .v small { display: block; color: var(--muted); font-weight: 400; font-size: .87rem; }
+
+  footer { padding: 2rem 0 3rem; font-size: .92rem; color: var(--muted); }
+  footer .links { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-bottom: .9rem; }
+  footer a { text-decoration: none; }
+  .hi { font-size: .95rem; color: var(--muted); }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>KshirSetu</h1>
-  <p class="tagline">Management software for milk distributors and the retailers they supply.</p>
-</header>
-
-<p>Milk moves early and on credit. A distributor sends out loaded vehicles before
-dawn, and by the end of the month owes an answer to every retailer about what was
-delivered, what was paid, and what is still outstanding. KshirSetu keeps that
-record straight for both sides.</p>
-
-<h2>Who it is for</h2>
-
-<div class="cards">
-  <div class="card">
-    <h3>Milk distributors</h3>
-    <p>A web system for the office — daily demand, trip-wise loading, deposits,
-    retailer ledgers, GST invoices and staff accounts.</p>
-  </div>
-  <div class="card">
-    <h3>Retailers</h3>
-    <p>An Android app for the shop — place tomorrow&rsquo;s order, record a deposit,
-    and see an up-to-date account statement in Hindi or English.</p>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">क्ष</span> KshirSetu</div>
+    <nav>
+      <a href="#what" class="nav-hide">What it does</a>
+      <a href="#how" class="nav-hide">How you get it</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </div>
 
-<h2>What the system covers</h2>
-
-<ul>
-  <li><strong>Daily demand</strong> — retailers place orders before a cut-off, and the office sees the day&rsquo;s total by product and by delivery trip.</li>
-  <li><strong>Loading and distribution</strong> — what each vehicle carries on each trip, against the capacity it actually has.</li>
-  <li><strong>Deposits</strong> — a retailer records a payment with its reference, and the office approves it against the bank statement.</li>
-  <li><strong>Account statements</strong> — a running daily ledger per retailer, sent as a PDF by email or WhatsApp.</li>
-  <li><strong>GST invoices</strong> — per-zone invoice numbering and Tally-compatible export.</li>
-  <li><strong>Notifications</strong> — order reminders and account messages to the retailer&rsquo;s phone.</li>
-</ul>
-
-<h2>How to get it</h2>
-
-<p>KshirSetu is not a consumer app. It is supplied to milk distributors, who
-create an account for each retailer they already do business with. A retailer
-opens the app, enters the dairy code given by their distributor, and signs in
-with the retailer code and password issued to them.</p>
-
-<p>Distributors interested in using KshirSetu can get in touch at the address
-below.</p>
-
-<h2>Contact</h2>
-
-<div class="contact">
-  <p><strong>KshirSetu</strong></p>
-  <p>Email: <a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a></p>
-  <p>Phone: <a href="tel:+918591137805">+91 85911 37805</a></p>
-  <p>New Colony, Ranipur Road, Beladullah,<br>Darbhanga, Bihar, India</p>
+<div class="hero">
+  <div class="wrap">
+    <h1>The milk went out at 4 a.m. <em>The accounts should already be right.</em></h1>
+    <p class="lede">KshirSetu is management software for milk distributors — daily
+    orders, trip-wise loading, deposits, retailer ledgers and GST invoices — with an
+    Android app for every retailer you supply.</p>
+    <div class="cta">
+      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">Message on WhatsApp</a>
+      <a class="btn btn-ghost" href="mailto:kshirsetu@gmail.com?subject=KshirSetu%20enquiry">Email us</a>
+    </div>
+    <p class="note">Built for a working milk distribution business in Bihar, and
+    running it every day — <b>not a demo</b>.</p>
+  </div>
 </div>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2>Milk moves early, and it moves on credit.</h2>
+    <p class="sub">A distributor sends out loaded vehicles before dawn, and by the end
+    of the month owes an answer to every retailer about what was delivered, what was
+    paid, and what is still outstanding. Registers and spreadsheets keep that answer
+    one person deep — and one argument away from a lost customer. KshirSetu keeps the
+    record straight on both sides of it.</p>
+
+    <div class="two">
+      <div class="card">
+        <span class="who">For the office</span>
+        <h3>A web system on the computer</h3>
+        <p>Everything the counter and the accountant do in a day: demand entry,
+        loading sheets, deposit approvals, rates, ledgers, invoices and staff
+        accounts — with role-based permissions so each person sees only their own
+        work.</p>
+      </div>
+      <div class="card">
+        <span class="who">For your retailers</span>
+        <h3>An Android app for the shop</h3>
+        <p>The retailer places tomorrow's order before the cut-off, records a deposit
+        with its reference and photo, and sees an up-to-date account statement — in
+        Hindi or English, on the phone already in their pocket.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <p class="eyebrow">What it covers</p>
+    <h2>The whole day, not one part of it.</h2>
+    <p class="sub">Around sixty screens, each one built against how the work is
+    actually done — because it was written alongside a distributor who was already
+    doing it.</p>
+
+    <div class="grid3">
+      <div class="card feat">
+        <h3><span class="n">01</span> Daily demand</h3>
+        <p>Retailers order before a cut-off you set per zone. The office sees the
+        day's total by product and by delivery trip, and can enter or correct any
+        retailer's order itself.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">02</span> Loading &amp; distribution</h3>
+        <p>Trip-wise split of the day's load, what each vehicle carries against the
+        capacity it actually has, and printable loading and collection sheets for the
+        driver.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">03</span> Deposits</h3>
+        <p>The retailer records a payment with its UTR and receipt photo; the office
+        approves it against the bank statement — including a checker that reads the
+        statement file and matches references for you.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">04</span> Retailer accounts</h3>
+        <p>A running daily ledger per retailer, opening to closing, with balances,
+        outstanding dues, agreed repayment plans and a watchlist for the ones sliding
+        the wrong way.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">05</span> GST &amp; invoicing</h3>
+        <p>Tax invoices with per-zone financial-year numbering, HSN codes, a GST
+        summary report, and a Tally-compatible export of the sale, bank and cash
+        books.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">06</span> Statements that reach people</h3>
+        <p>Account statements go out as a PDF over WhatsApp or email, one retailer or
+        the whole zone at once — so the monthly reconciliation call stops being a
+        phone call.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">07</span> Crates, damage &amp; stock</h3>
+        <p>Crates issued and returned per retailer, damage and shortage entries, and
+        stock and purchase reports against what the dairy actually supplied.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">08</span> Vehicles &amp; staff</h3>
+        <p>Diesel entries against odometer readings with per-vehicle mileage, plus
+        staff attendance, wage rates and salary payouts for drivers and helpers.</p>
+      </div>
+      <div class="card feat">
+        <h3><span class="n">09</span> Control &amp; oversight</h3>
+        <p>Day-close and freeze so a settled day cannot be edited quietly, an audit
+        trail on rates and approvals, comparison and performance reports, and push
+        reminders when a retailer has not ordered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <p class="eyebrow">Why trust it with the books</p>
+    <h2>It was proved against the old system before it replaced it.</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">1,000+</div>
+        <div class="lbl">retailer accounts carried over from the previous system</div>
+      </div>
+      <div class="stat">
+        <div class="num">To the paisa</div>
+        <div class="lbl">every retailer's opening balance matched the old books, checked one by one</div>
+      </div>
+      <div class="stat">
+        <div class="num">Multi-zone</div>
+        <div class="lbl">separate zones, rates, invoice series and cut-offs under one office</div>
+      </div>
+    </div>
+
+    <p class="quote">Years of existing data — retailers, balances, rates, transaction
+    history — were migrated out of the old FoxPro system and reconciled retailer by
+    retailer until the closing balances agreed exactly. Your history comes with you.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <p class="eyebrow">How you get it</p>
+    <h2>Your own copy — your data stays yours.</h2>
+    <p class="sub">KshirSetu is not a consumer app and it is not a shared pool of
+    everyone's data. Each distributor runs a separate instance with its own database
+    and its own web address. Nothing is shared between distributors.</p>
+
+    <ol class="steps">
+      <li><b>We talk first.</b> Zones, products, rate structure, how your trips and
+      cut-offs work today, and what your existing data looks like.</li>
+      <li><b>Your instance is set up</b> with your firm's name, GSTIN and zones — and
+      your existing retailers and balances are imported and reconciled against your
+      current books.</li>
+      <li><b>Your staff get logins</b> with roles, so demand entry, approvals and rate
+      changes stay in the right hands.</li>
+      <li><b>Your retailers install the app</b> and enter the dairy code you give
+      them, then sign in with the retailer code and password you issue. It points them
+      at your instance, and only yours.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get in touch</p>
+    <h2>Interested in running it?</h2>
+    <p class="sub">If you distribute milk and this sounds like your day, write or call.
+    Tell us roughly how many retailers you supply and what you use today — that is
+    enough to start.</p>
+
+    <div class="contact-card">
+      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">Message on WhatsApp</a>
+      <div class="rows">
+        <div class="row">
+          <div class="k">Phone</div>
+          <div class="v"><a href="tel:+918591137805">+91 85911 37805</a></div>
+        </div>
+        <div class="row">
+          <div class="k">Email</div>
+          <div class="v"><a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a></div>
+        </div>
+        <div class="row">
+          <div class="k">Address</div>
+          <div class="v">New Colony, Ranipur Road, Beladullah,<br>Darbhanga, Bihar, India</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="hi" style="margin-top:1.4rem">दूध वितरकों के लिए बनाया गया — ऑर्डर, गाड़ी की लोडिंग, जमा, बकाया और खाता विवरण, सब एक जगह। बात करने के लिए ऊपर दिए नंबर पर संपर्क करें।</p>
+  </div>
+</section>
 
 <footer>
-  <a href="./privacy.html">Privacy Policy</a>
-  <a href="./delete-account.html">Account &amp; Data Deletion</a>
+  <div class="wrap">
+    <div class="links">
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./delete-account.html">Account &amp; Data Deletion</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>&copy; 2026 KshirSetu · Darbhanga, Bihar, India</div>
+  </div>
 </footer>
 
 </body>
