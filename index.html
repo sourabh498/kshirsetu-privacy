@@ -3,290 +3,499 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KshirSetu — Software for milk distributors</title>
-<meta name="description" content="KshirSetu is management software for milk distributors and the retailers they supply — daily orders, trip loading, deposits, retailer ledgers, GST invoices and an Android app for the shop.">
+<title>KshirSetu — Milk distribution management software</title>
+<meta name="description" content="KshirSetu runs the whole milk distribution day: retailer orders, trip-wise loading, deposits, retailer ledgers and GST invoices — with an Android app for every retailer you supply.">
 <link rel="canonical" href="https://kshirsetu.in/">
-<meta property="og:title" content="KshirSetu — Software for milk distributors">
-<meta property="og:description" content="Daily orders, trip loading, deposits, retailer ledgers and GST invoices — with an Android app for the retailers you supply.">
+<meta property="og:site_name" content="KshirSetu">
+<meta property="og:title" content="KshirSetu — Milk distribution management software">
+<meta property="og:description" content="Orders, loading, deposits, retailer ledgers and GST invoices — with an Android app for the retailers you supply.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kshirsetu.in/">
-<meta name="theme-color" content="#0B3C93">
+<meta property="og:image" content="https://kshirsetu.in/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A4FC7">
+<link rel="icon" href="./assets/favicon-32.png" sizes="32x32">
+<link rel="icon" href="./assets/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>document.documentElement.className+=" js";</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: light dark;
-    --blue: #0B3C93;
-    --blue-soft: #1a5bc4;
-    --ink: #16202e;
-    --muted: #55637a;
-    --line: #dde4ee;
-    --bg: #ffffff;
-    --panel: #f7f9fc;
-    --panel-2: #eef3fb;
-    --accent: #0f8a5f;
-    --shadow: 0 1px 2px rgba(11,60,147,.06), 0 8px 24px rgba(11,60,147,.06);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --blue: #7fb0ff;
-      --blue-soft: #9dc4ff;
-      --ink: #e7ecf3;
-      --muted: #9fadc2;
-      --line: #26303d;
-      --bg: #0f1319;
-      --panel: #151b23;
-      --panel-2: #18222f;
-      --accent: #4bd39a;
-      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
-    }
+    color-scheme: light;
+    --brand: #0A4FC7;
+    --brand-dark: #072F73;
+    --brand-deep: #051E4D;
+    --green: #2E9E3E;
+    --ink: #0E1726;
+    --ink-2: #33415A;
+    --muted: #5D6E88;
+    --line: #E3E9F2;
+    --line-2: #EEF2F8;
+    --bg: #FFFFFF;
+    --surface: #F6F9FD;
+    --radius: 14px;
+    --shadow-sm: 0 1px 2px rgba(14,23,38,.05), 0 2px 8px rgba(14,23,38,.04);
+    --shadow-md: 0 2px 6px rgba(14,23,38,.06), 0 12px 32px rgba(10,79,199,.08);
+    --shadow-lg: 0 8px 20px rgba(14,23,38,.08), 0 30px 60px rgba(7,47,115,.16);
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+    --deva: "Noto Sans Devanagari", "Inter", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0;
-    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
-    color: var(--ink); background: var(--bg);
-    -webkit-text-size-adjust: 100%;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 16.5px/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
-  a { color: var(--blue); }
-
-  /* ---------- top bar ---------- */
-  .topbar {
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
-    position: sticky; top: 0; z-index: 10;
-  }
-  .topbar .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; padding-top: .85rem; padding-bottom: .85rem;
-  }
-  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--blue); font-size: 1.1rem; letter-spacing: -.01em; }
-  .brand .mark {
-    width: 1.9rem; height: 1.9rem; border-radius: .5rem; flex: none;
-    background: var(--blue); color: #fff; display: grid; place-items: center;
-    font-size: .95rem; font-weight: 700;
-  }
-  @media (prefers-color-scheme: dark) { .brand .mark { color: #0f1319; } }
-  .topbar nav { display: flex; gap: 1.3rem; font-size: .95rem; }
-  .topbar nav a { color: var(--muted); text-decoration: none; }
-  .topbar nav a:hover { color: var(--blue); }
-  .topbar nav .nav-hide { display: none; }
-  @media (min-width: 44rem) { .topbar nav .nav-hide { display: inline; } }
-
-  /* ---------- hero ---------- */
-  .hero { padding: 3.2rem 0 2.6rem; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--panel-2), var(--bg)); }
-  .hero h1 {
-    font-size: clamp(1.9rem, 5.2vw, 2.9rem); line-height: 1.15;
-    margin: 0 0 .9rem; letter-spacing: -.02em; color: var(--ink); max-width: 20ch;
-  }
-  .hero h1 em { font-style: normal; color: var(--blue); }
-  .hero .lede { font-size: 1.12rem; color: var(--muted); margin: 0 0 1.7rem; max-width: 46ch; }
-  .cta { display: flex; flex-wrap: wrap; gap: .7rem; }
-  .btn {
-    display: inline-flex; align-items: center; gap: .5rem;
-    padding: .72rem 1.15rem; border-radius: .55rem;
-    font-weight: 600; font-size: .98rem; text-decoration: none;
-    border: 1px solid transparent;
-  }
-  .btn-wa { background: #1faa53; color: #fff; }
-  .btn-wa:hover { background: #189146; }
-  .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--bg); }
-  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-  .hero .note { margin: 1.4rem 0 0; font-size: .93rem; color: var(--muted); }
-  .hero .note b { color: var(--ink); font-weight: 600; }
-
-  /* ---------- sections ---------- */
-  section { padding: 3rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 3.6rem; }
-  h2 { font-size: 1.45rem; margin: 0 0 .5rem; letter-spacing: -.015em; color: var(--ink); }
-  .sub { color: var(--muted); margin: 0 0 1.8rem; max-width: 58ch; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--brand); }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  h1, h2, h3, .display { font-family: var(--display); letter-spacing: -.022em; }
+  h2 { font-size: clamp(1.6rem, 3.4vw, 2.15rem); font-weight: 800; margin: 0 0 .75rem; line-height: 1.2; }
+  h3 { font-weight: 700; }
   .eyebrow {
-    text-transform: uppercase; letter-spacing: .09em; font-size: .76rem;
-    font-weight: 700; color: var(--blue); margin: 0 0 .55rem;
+    font-family: var(--sans); font-weight: 600; font-size: .78rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--brand);
+    margin: 0 0 .7rem;
   }
+  .sub { color: var(--muted); font-size: 1.06rem; margin: 0 0 2.4rem; max-width: 56ch; }
+  section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+  .sec-head { max-width: 60rem; }
 
-  .two { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  @media (min-width: 42rem) { .two { grid-template-columns: 1fr 1fr; } }
-  .grid3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  @media (min-width: 40rem) { .grid3 { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 58rem) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+  /* ---------------- buttons ---------------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    font-family: var(--sans); font-weight: 600; font-size: .97rem;
+    padding: .8rem 1.35rem; border-radius: 10px; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn svg { width: 1.05em; height: 1.05em; flex: none; }
+  .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 1px 2px rgba(7,47,115,.25), 0 8px 20px rgba(10,79,199,.22); }
+  .btn-primary:hover { background: #0947B2; transform: translateY(-1px); }
+  .btn-wa { background: #1FAA53; color: #fff; box-shadow: 0 1px 2px rgba(9,80,40,.2), 0 8px 20px rgba(31,170,83,.22); }
+  .btn-wa:hover { background: #1B9549; transform: translateY(-1px); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-on-dark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.28); }
+  .btn-on-dark:hover { background: rgba(255,255,255,.18); }
+  .btn-sm { padding: .58rem 1rem; font-size: .9rem; }
 
+  /* ---------------- header ---------------- */
+  .site-head {
+    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.88);
+    backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-2);
+  }
+  .site-head .wrap { display: flex; align-items: center; gap: 1.5rem; height: 4.4rem; }
+  .logo { display: flex; align-items: center; gap: .62rem; text-decoration: none; margin-right: auto; }
+  .logo img { width: 2.2rem; height: 2.2rem; border-radius: .55rem; }
+  .logo .name {
+    font-family: var(--display); font-weight: 800; font-size: 1.22rem;
+    color: var(--brand-dark); letter-spacing: -.02em;
+  }
+  .site-nav { display: none; gap: 1.9rem; }
+  .site-nav a { color: var(--ink-2); text-decoration: none; font-size: .95rem; font-weight: 500; }
+  .site-nav a:hover { color: var(--brand); }
+  @media (min-width: 56rem) { .site-nav { display: flex; } }
+
+  /* ---------------- hero ---------------- */
+  .hero {
+    position: relative; overflow: hidden; padding: clamp(3rem, 6vw, 4.75rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+    background:
+      radial-gradient(1100px 520px at 78% -8%, #E8F0FE 0%, rgba(232,240,254,0) 62%),
+      linear-gradient(180deg, #FBFCFE 0%, #FFFFFF 70%);
+    border-bottom: 1px solid var(--line-2);
+  }
+  .hero-grid { display: grid; gap: clamp(2.5rem, 5vw, 3.5rem); align-items: center; }
+  @media (min-width: 62rem) { .hero-grid { grid-template-columns: 1.02fr 1fr; } }
+  .hero h1 {
+    font-size: clamp(1.95rem, 4.2vw, 2.85rem); font-weight: 800; line-height: 1.14;
+    margin: 0 0 1.1rem; color: var(--ink);
+  }
+  .hero h1 .hl { color: var(--brand); display: block; }
+  .hero .lede { font-size: 1.12rem; color: var(--ink-2); margin: 0 0 2rem; max-width: 34rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.6rem; }
+  .hero-note { display: flex; align-items: center; gap: .55rem; font-size: .92rem; color: var(--muted); }
+  .hero-note svg { width: 1.05rem; height: 1.05rem; color: var(--green); flex: none; }
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.4rem;
+    padding: .34rem .78rem .34rem .42rem; border-radius: 999px;
+    background: #fff; border: 1px solid var(--line);
+    font-size: .84rem; font-weight: 500; color: var(--ink-2); box-shadow: var(--shadow-sm);
+  }
+  .pill b { color: var(--brand-dark); font-weight: 600; white-space: nowrap; }
+  .pill .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--green); margin-left: .3rem; }
+
+  /* ---------------- product mock ---------------- */
+  .mock { position: relative; }
+  @media (min-width: 34rem) { .mock { padding-right: 8rem; } }
+  .app {
+    border-radius: 16px; background: #fff; border: 1px solid var(--line);
+    box-shadow: var(--shadow-lg); overflow: hidden;
+  }
+  .app-bar {
+    display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem;
+    background: linear-gradient(180deg, #0B57D0, #0A3F9E); color: #fff;
+  }
+  .app-bar .t { font-family: var(--display); font-weight: 700; font-size: .88rem; letter-spacing: -.01em; }
+  .app-bar .d { margin-left: auto; font-size: .74rem; opacity: .82; }
+  .app-bar .lg { width: 1.25rem; height: 1.25rem; border-radius: .3rem; }
+  .app-body { padding: .95rem; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin-bottom: .85rem; }
+  .tile { background: var(--surface); border: 1px solid var(--line-2); border-radius: 9px; padding: .6rem .65rem; }
+  .tile .k { font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; }
+  .tile .v { font-family: var(--display); font-weight: 800; font-size: 1.02rem; color: var(--ink); margin-top: .12rem; letter-spacing: -.02em; }
+  .tile .v span { font-size: .66rem; font-weight: 600; color: var(--muted); }
+  .rowline { display: flex; align-items: center; gap: .55rem; padding: .45rem .15rem; border-bottom: 1px solid var(--line-2); font-size: .76rem; }
+  .rowline:last-child { border-bottom: 0; }
+  .rowline .nm { font-weight: 600; color: var(--ink-2); min-width: 3.6rem; }
+  .rowline .veh { color: var(--muted); font-size: .7rem; }
+  .rowline .qty { margin-left: auto; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .bar { height: .32rem; border-radius: 99px; background: var(--line); overflow: hidden; width: 4.6rem; flex: none; }
+  .bar i { display: block; height: 100%; background: var(--brand); border-radius: 99px; }
+  .bar.full i { background: var(--green); }
+  .caption { font-size: .58rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-weight: 600; margin: 0 0 .4rem; }
+  .phone {
+    position: absolute; right: 0; bottom: 1.2rem; width: 8rem;
+    border-radius: 16px; border: 5px solid #16233A; background: #16233A;
+    box-shadow: var(--shadow-lg); overflow: hidden; display: none;
+  }
+  @media (min-width: 34rem) { .phone { display: block; } }
+  .phone .scr { background: #fff; border-radius: 11px; overflow: hidden; }
+  .phone .ph-top { background: linear-gradient(180deg, #0B57D0, #0A3F9E); color: #fff; padding: .5rem .55rem; }
+  .phone .ph-top .h { font-family: var(--deva); font-weight: 600; font-size: .68rem; }
+  .phone .ph-top .s { font-size: .55rem; opacity: .82; }
+  .phone .ph-b { padding: .5rem .55rem .6rem; }
+  .phone .pr { display: flex; align-items: center; gap: .3rem; font-size: .58rem; padding: .26rem 0; border-bottom: 1px solid var(--line-2); }
+  .phone .pr .n { color: var(--ink-2); font-family: var(--deva); }
+  .phone .pr .q { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .phone .save { margin-top: .5rem; background: var(--green); color: #fff; text-align: center; border-radius: 6px; padding: .34rem; font-size: .58rem; font-weight: 700; font-family: var(--deva); }
+
+  /* ---------------- trust strip ---------------- */
+  .strip { background: var(--surface); border-bottom: 1px solid var(--line-2); padding: 1.15rem 0; }
+  .strip ul {
+    list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap;
+    gap: .6rem 2.1rem; justify-content: center;
+    font-size: .88rem; color: var(--ink-2); font-weight: 500;
+  }
+  .strip li { display: flex; align-items: center; gap: .45rem; }
+  .strip svg { width: 1rem; height: 1rem; color: var(--brand); flex: none; }
+
+  /* ---------------- cards ---------------- */
+  .two { display: grid; gap: 1.15rem; }
+  @media (min-width: 48rem) { .two { grid-template-columns: 1fr 1fr; } }
+  .grid3 { display: grid; gap: 1.15rem; }
+  @media (min-width: 44rem) { .grid3 { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 64rem) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
   .card {
-    border: 1px solid var(--line); border-radius: .7rem;
-    padding: 1.25rem 1.3rem; background: var(--panel);
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.5rem 1.55rem; box-shadow: var(--shadow-sm);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
-  .card h3 { margin: 0 0 .45rem; font-size: 1.03rem; color: var(--ink); }
-  .card p { margin: 0; font-size: .96rem; color: var(--muted); }
-  .card ul { margin: .6rem 0 0; padding-left: 1.15rem; font-size: .95rem; color: var(--muted); }
-  .card li { margin: .28rem 0; }
-  .card .who {
-    display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .07em;
-    text-transform: uppercase; color: var(--blue); margin-bottom: .5rem;
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #D3DEEE; }
+  .card h3 { margin: 0 0 .45rem; font-size: 1.06rem; color: var(--ink); }
+  .card p { margin: 0; color: var(--muted); font-size: .97rem; }
+  .ico {
+    width: 2.5rem; height: 2.5rem; border-radius: 10px; display: grid; place-items: center;
+    background: #EAF1FE; color: var(--brand); margin-bottom: 1rem;
   }
-
-  .feat h3 { display: flex; align-items: baseline; gap: .55rem; }
-  .feat h3 span.n {
-    font-size: .78rem; font-weight: 700; color: var(--blue);
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* ---------- proof ---------- */
-  .proof { background: var(--panel-2); }
-  .stats { display: grid; gap: 1.4rem; grid-template-columns: 1fr; margin: 0 0 1.8rem; }
-  @media (min-width: 40rem) { .stats { grid-template-columns: repeat(3, 1fr); } }
-  .stat .num { font-size: 1.9rem; font-weight: 700; color: var(--blue); line-height: 1.1; letter-spacing: -.02em; }
-  .stat .lbl { font-size: .93rem; color: var(--muted); margin-top: .2rem; }
-  .quote {
-    border-left: 3px solid var(--blue); padding: .3rem 0 .3rem 1.1rem;
-    margin: 0; color: var(--ink); font-size: 1.02rem; max-width: 60ch;
+  .ico svg { width: 1.28rem; height: 1.28rem; }
+  .ico.g { background: #E7F6EA; color: var(--green); }
+  .card.big { padding: 1.8rem 1.85rem; }
+  .card.big h3 { font-size: 1.22rem; margin-bottom: .55rem; }
+  .card.big p { font-size: 1rem; }
+  .tagrow { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+  .tag {
+    font-size: .78rem; font-weight: 600; color: var(--ink-2);
+    background: var(--surface); border: 1px solid var(--line-2);
+    padding: .25rem .6rem; border-radius: 99px;
   }
 
-  /* ---------- steps ---------- */
-  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
-  ol.steps li {
-    counter-increment: s; position: relative; padding-left: 2.7rem;
-    color: var(--muted); font-size: .98rem;
+  /* ---------------- dark proof band ---------------- */
+  .band {
+    background:
+      radial-gradient(900px 420px at 15% 0%, #0B57D0 0%, rgba(11,87,208,0) 60%),
+      linear-gradient(160deg, #072F73 0%, #051E4D 100%);
+    color: #fff;
   }
+  .band h2 { color: #fff; }
+  .band .sub { color: #B8CBEA; }
+  .band .eyebrow { color: #7FB0FF; }
+  .stats { display: grid; gap: 2rem; margin-top: .5rem; }
+  @media (min-width: 44rem) { .stats { grid-template-columns: repeat(3, 1fr); gap: 2.4rem; } }
+  .stat .n { font-family: var(--display); font-weight: 800; font-size: 2.15rem; letter-spacing: -.03em; line-height: 1.05; color: #fff; }
+  .stat .l { color: #B8CBEA; font-size: .95rem; margin-top: .45rem; }
+  .band .rule { height: 1px; background: rgba(255,255,255,.16); margin: 2.6rem 0; }
+  .band .quote { max-width: 60ch; color: #DCE7F9; font-size: 1.04rem; margin: 0; }
+
+  /* ---------------- steps ---------------- */
+  ol.steps { counter-reset: s; list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+  @media (min-width: 52rem) { ol.steps { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 2.4rem; } }
+  ol.steps li { counter-increment: s; padding-left: 3.2rem; position: relative; color: var(--muted); font-size: .99rem; }
   ol.steps li::before {
-    content: counter(s); position: absolute; left: 0; top: -.1rem;
-    width: 1.85rem; height: 1.85rem; border-radius: 50%;
-    background: var(--blue); color: #fff; display: grid; place-items: center;
-    font-size: .88rem; font-weight: 700;
+    content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -.15rem;
+    font-family: var(--display); font-weight: 800; font-size: .85rem; color: var(--brand);
+    background: #EAF1FE; width: 2.3rem; height: 2.3rem; border-radius: 8px;
+    display: grid; place-items: center;
   }
-  @media (prefers-color-scheme: dark) { ol.steps li::before { color: #0f1319; } }
-  ol.steps li b { color: var(--ink); }
+  ol.steps li b { display: block; color: var(--ink); font-family: var(--display); font-size: 1.05rem; margin-bottom: .2rem; font-weight: 700; }
 
-  /* ---------- contact ---------- */
-  .contact-card {
-    border: 1px solid var(--line); border-radius: .8rem; background: var(--panel);
-    padding: 1.6rem 1.5rem; box-shadow: var(--shadow);
+  /* ---------------- faq ---------------- */
+  .faq { max-width: 52rem; }
+  details {
+    border-bottom: 1px solid var(--line); padding: 1.15rem 0;
   }
-  .rows { display: grid; gap: .9rem; margin: 1.3rem 0 0; }
-  .row { display: flex; gap: .8rem; align-items: flex-start; font-size: 1rem; }
-  .row .k { color: var(--muted); min-width: 5.2rem; font-size: .93rem; padding-top: .1rem; }
-  .row .v a { text-decoration: none; font-weight: 600; }
-  .row .v small { display: block; color: var(--muted); font-weight: 400; font-size: .87rem; }
+  details summary {
+    cursor: pointer; list-style: none; display: flex; align-items: flex-start; gap: 1rem;
+    font-family: var(--display); font-weight: 700; font-size: 1.03rem; color: var(--ink);
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+"; margin-left: auto; color: var(--brand); font-size: 1.35rem;
+    line-height: 1; font-weight: 600; flex: none; transition: transform .2s ease;
+  }
+  details[open] summary::after { content: "−"; }
+  details p { margin: .8rem 0 0; color: var(--muted); font-size: .99rem; max-width: 62ch; }
 
-  footer { padding: 2rem 0 3rem; font-size: .92rem; color: var(--muted); }
-  footer .links { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-bottom: .9rem; }
-  footer a { text-decoration: none; }
-  .hi { font-size: .95rem; color: var(--muted); }
+  /* ---------------- cta ---------------- */
+  .cta-band { background: var(--surface); border-top: 1px solid var(--line-2); }
+  .cta-panel {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow-md); padding: clamp(1.8rem, 4vw, 2.8rem);
+  }
+  .cta-box { display: grid; gap: 1.8rem; align-items: center; }
+  @media (min-width: 54rem) { .cta-box { grid-template-columns: 1.35fr auto; gap: 2.5rem; } }
+  .cta-box h2 { margin-bottom: .5rem; }
+  .cta-box p { color: var(--muted); margin: 0; max-width: 46ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+  @media (min-width: 54rem) { .cta-actions { flex-direction: column; align-items: stretch; min-width: 14rem; } }
+  .contact-lines { display: flex; flex-wrap: wrap; gap: .4rem 1.8rem; margin-top: 1.3rem; font-size: .96rem; }
+  .contact-lines a { text-decoration: none; font-weight: 600; }
+  .contact-lines span { color: var(--muted); }
+
+  /* ---------------- footer ---------------- */
+  .site-foot { background: #071A3D; color: #A9BEE0; padding: 3.5rem 0 2.2rem; font-size: .93rem; }
+  .foot-grid { display: grid; gap: 2.2rem; }
+  @media (min-width: 50rem) { .foot-grid { grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 2.5rem; } }
+  .site-foot h4 {
+    font-family: var(--display); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em;
+    color: #fff; margin: 0 0 .9rem; font-weight: 700;
+  }
+  .site-foot a { color: #A9BEE0; text-decoration: none; }
+  .site-foot a:hover { color: #fff; }
+  .site-foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  .foot-brand .logo { margin-bottom: .9rem; }
+  .foot-brand .logo .name { color: #fff; }
+  .foot-brand p { margin: 0; max-width: 30ch; line-height: 1.6; }
+  .foot-bottom {
+    margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.12);
+    display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; justify-content: space-between;
+    font-size: .87rem; color: #8AA2C8;
+  }
+  .hindi { font-family: var(--deva); }
+
+  /* ---------------- motion ---------------- */
+  .js .rise { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .js .rise.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .rise { opacity: 1; transform: none; transition: none; }
+    .card:hover, .btn:hover { transform: none; }
+  }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+  section[id] { scroll-margin-top: 5rem; }
 </style>
 </head>
 <body>
 
-<div class="topbar">
+<header class="site-head">
   <div class="wrap">
-    <div class="brand"><span class="mark">क्ष</span> KshirSetu</div>
-    <nav>
-      <a href="#what" class="nav-hide">What it does</a>
-      <a href="#how" class="nav-hide">How you get it</a>
-      <a href="#contact">Contact</a>
+    <a class="logo" href="#top">
+      <img src="./assets/logo.png" alt="KshirSetu logo" width="256" height="256">
+      <span class="name">KshirSetu</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#platform">Platform</a>
+      <a href="#proof">Why it holds up</a>
+      <a href="#onboarding">Getting started</a>
+      <a href="#faq">FAQ</a>
     </nav>
+    <a class="btn btn-primary btn-sm" href="#contact">Talk to us</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span> <b>In daily use</b> — running a live milk distribution business</span>
+      <h1>The milk leaves at 4&nbsp;a.m. <span class="hl">The accounts should already be right.</span></h1>
+      <p class="lede">KshirSetu is management software for milk distributors — retailer
+      orders, trip-wise loading, deposits, ledgers and GST invoices in one system,
+      with an Android app for every retailer you supply.</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#platform">See what it covers</a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Your own instance and your own database — nothing shared with another distributor.
+      </p>
+    </div>
+
+    <div class="mock" aria-hidden="true">
+      <div class="app">
+        <div class="app-bar">
+          <img class="lg" src="./assets/logo.png" alt="" width="256" height="256">
+          <span class="t">Daily demand — Zone DJ</span>
+          <span class="d">Trip-wise · today</span>
+        </div>
+        <div class="app-body">
+          <div class="tiles">
+            <div class="tile"><div class="k">Milk today</div><div class="v">4,820 <span>L</span></div></div>
+            <div class="tile"><div class="k">Ordered</div><div class="v">312<span>/340</span></div></div>
+            <div class="tile"><div class="k">Deposits</div><div class="v">18 <span>pending</span></div></div>
+          </div>
+          <p class="caption">Loading by trip</p>
+          <div class="rowline"><span class="nm">Trip 1</span><span class="veh">BR-07-GA-4412</span><span class="bar full"><i style="width:92%"></i></span><span class="qty">1,840 L</span></div>
+          <div class="rowline"><span class="nm">Trip 2</span><span class="veh">BR-07-GB-1180</span><span class="bar"><i style="width:74%"></i></span><span class="qty">1,460 L</span></div>
+          <div class="rowline"><span class="nm">Trip 3</span><span class="veh">BR-07-GA-9027</span><span class="bar"><i style="width:58%"></i></span><span class="qty">1,120 L</span></div>
+          <div class="rowline"><span class="nm">Trip 4</span><span class="veh">BR-06-HH-3345</span><span class="bar"><i style="width:22%"></i></span><span class="qty">400 L</span></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="scr">
+          <div class="ph-top"><div class="h">कल का ऑर्डर</div><div class="s">R-1042 · 6:00 PM</div></div>
+          <div class="ph-b">
+            <div class="pr"><span class="n">फुल क्रीम</span><span class="q">40</span></div>
+            <div class="pr"><span class="n">टोंड दूध</span><span class="q">65</span></div>
+            <div class="pr"><span class="n">दही 400g</span><span class="q">24</span></div>
+            <div class="save">ऑर्डर भेजें</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="hero">
+<div class="strip">
   <div class="wrap">
-    <h1>The milk went out at 4 a.m. <em>The accounts should already be right.</em></h1>
-    <p class="lede">KshirSetu is management software for milk distributors — daily
-    orders, trip-wise loading, deposits, retailer ledgers and GST invoices — with an
-    Android app for every retailer you supply.</p>
-    <div class="cta">
-      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">Message on WhatsApp</a>
-      <a class="btn btn-ghost" href="mailto:kshirsetu@gmail.com?subject=KshirSetu%20enquiry">Email us</a>
-    </div>
-    <p class="note">Built for a working milk distribution business in Bihar, and
-    running it every day — <b>not a demo</b>.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> GST invoices &amp; Tally export</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Hindi &amp; English</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Statements on WhatsApp</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your data migrated in</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Android app for retailers</li>
+    </ul>
   </div>
 </div>
 
 <section>
   <div class="wrap">
-    <p class="eyebrow">The problem</p>
-    <h2>Milk moves early, and it moves on credit.</h2>
-    <p class="sub">A distributor sends out loaded vehicles before dawn, and by the end
-    of the month owes an answer to every retailer about what was delivered, what was
-    paid, and what is still outstanding. Registers and spreadsheets keep that answer
-    one person deep — and one argument away from a lost customer. KshirSetu keeps the
-    record straight on both sides of it.</p>
-
-    <div class="two">
-      <div class="card">
-        <span class="who">For the office</span>
-        <h3>A web system on the computer</h3>
-        <p>Everything the counter and the accountant do in a day: demand entry,
-        loading sheets, deposit approvals, rates, ledgers, invoices and staff
-        accounts — with role-based permissions so each person sees only their own
-        work.</p>
+    <div class="sec-head rise">
+      <p class="eyebrow">The problem</p>
+      <h2>Milk moves early, and it moves on credit.</h2>
+      <p class="sub">You send out loaded vehicles before dawn, and by month-end you owe
+      every retailer an answer about what was delivered, what was paid, and what is
+      still outstanding. In registers and spreadsheets that answer lives one person
+      deep — and it is one argument away from losing a customer.</p>
+    </div>
+    <div class="two rise">
+      <div class="card big">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>For the office</h3>
+        <p>A web system on the computer, covering everything the counter and the
+        accountant do in a day — demand entry, loading sheets, deposit approvals,
+        rates, ledgers, invoices and staff accounts — with role-based permissions so
+        each person only touches their own work.</p>
+        <div class="tagrow"><span class="tag">Demand</span><span class="tag">Loading</span><span class="tag">Deposits</span><span class="tag">Ledgers</span><span class="tag">GST</span></div>
       </div>
-      <div class="card">
-        <span class="who">For your retailers</span>
-        <h3>An Android app for the shop</h3>
-        <p>The retailer places tomorrow's order before the cut-off, records a deposit
-        with its reference and photo, and sees an up-to-date account statement — in
-        Hindi or English, on the phone already in their pocket.</p>
+      <div class="card big">
+        <div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+        <h3>For your retailers</h3>
+        <p>An Android app for the shop. The retailer places tomorrow's order before the
+        cut-off, records a deposit with its reference and receipt photo, and sees an
+        up-to-date account statement — in Hindi or English, on the phone already in
+        their pocket.</p>
+        <div class="tagrow"><span class="tag">Orders</span><span class="tag">Deposits</span><span class="tag">Statement</span><span class="tag">Reminders</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="what">
+<section id="platform" style="background:var(--surface);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
   <div class="wrap">
-    <p class="eyebrow">What it covers</p>
-    <h2>The whole day, not one part of it.</h2>
-    <p class="sub">Around sixty screens, each one built against how the work is
-    actually done — because it was written alongside a distributor who was already
-    doing it.</p>
-
-    <div class="grid3">
-      <div class="card feat">
-        <h3><span class="n">01</span> Daily demand</h3>
-        <p>Retailers order before a cut-off you set per zone. The office sees the
-        day's total by product and by delivery trip, and can enter or correct any
-        retailer's order itself.</p>
+    <div class="sec-head rise">
+      <p class="eyebrow">The platform</p>
+      <h2>The whole day, not one part of it.</h2>
+      <p class="sub">Around sixty screens, each built against how the work is actually
+      done — because it was written alongside a distributor who was already doing it.</p>
+    </div>
+    <div class="grid3 rise">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Daily demand</h3>
+        <p>Retailers order before a cut-off you set per zone. The office sees the day's
+        total by product and by trip, and can enter or correct any retailer's order
+        itself.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">02</span> Loading &amp; distribution</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h13v10H1zM14 10h4l3 3v4h-7z"/><circle cx="5.5" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/></svg></div>
+        <h3>Loading &amp; distribution</h3>
         <p>Trip-wise split of the day's load, what each vehicle carries against the
-        capacity it actually has, and printable loading and collection sheets for the
+        capacity it really has, and printable loading and collection sheets for the
         driver.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">03</span> Deposits</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>Deposits</h3>
         <p>The retailer records a payment with its UTR and receipt photo; the office
-        approves it against the bank statement — including a checker that reads the
-        statement file and matches references for you.</p>
+        approves it against the bank statement — with a checker that reads the
+        statement file and matches the references for you.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">04</span> Retailer accounts</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Retailer accounts</h3>
         <p>A running daily ledger per retailer, opening to closing, with balances,
-        outstanding dues, agreed repayment plans and a watchlist for the ones sliding
+        outstanding dues, agreed repayment plans, and a watchlist for the ones sliding
         the wrong way.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">05</span> GST &amp; invoicing</h3>
-        <p>Tax invoices with per-zone financial-year numbering, HSN codes, a GST
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg></div>
+        <h3>GST &amp; invoicing</h3>
+        <p>Tax invoices with per-zone financial-year numbering and HSN codes, a GST
         summary report, and a Tally-compatible export of the sale, bank and cash
         books.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">06</span> Statements that reach people</h3>
-        <p>Account statements go out as a PDF over WhatsApp or email, one retailer or
-        the whole zone at once — so the monthly reconciliation call stops being a
-        phone call.</p>
+      <div class="card">
+        <div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3z"/><path d="M8 9h8"/></svg></div>
+        <h3>Statements that reach people</h3>
+        <p>Account statements go out as a PDF over WhatsApp or email — one retailer or
+        a whole zone at once — so the monthly reconciliation stops being a phone
+        call.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">07</span> Crates, damage &amp; stock</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18M9 7V4h6v3"/></svg></div>
+        <h3>Crates, damage &amp; stock</h3>
         <p>Crates issued and returned per retailer, damage and shortage entries, and
         stock and purchase reports against what the dairy actually supplied.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">08</span> Vehicles &amp; staff</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></svg></div>
+        <h3>Vehicles &amp; staff</h3>
         <p>Diesel entries against odometer readings with per-vehicle mileage, plus
         staff attendance, wage rates and salary payouts for drivers and helpers.</p>
       </div>
-      <div class="card feat">
-        <h3><span class="n">09</span> Control &amp; oversight</h3>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Control &amp; oversight</h3>
         <p>Day-close and freeze so a settled day cannot be edited quietly, an audit
         trail on rates and approvals, comparison and performance reports, and push
         reminders when a retailer has not ordered.</p>
@@ -295,96 +504,204 @@
   </div>
 </section>
 
-<section class="proof">
+<section class="band" id="proof">
   <div class="wrap">
-    <p class="eyebrow">Why trust it with the books</p>
-    <h2>It was proved against the old system before it replaced it.</h2>
-
-    <div class="stats">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why it holds up</p>
+      <h2>It was proved against the old books before it replaced them.</h2>
+      <p class="sub">Software that touches money has to earn its place. This one was
+      checked against the system it replaced, retailer by retailer, before anyone
+      trusted it with a day's trade.</p>
+    </div>
+    <div class="stats rise">
       <div class="stat">
-        <div class="num">1,000+</div>
-        <div class="lbl">retailer accounts carried over from the previous system</div>
+        <div class="n">1,000+</div>
+        <div class="l">retailer accounts carried over from the previous system, with their history</div>
       </div>
       <div class="stat">
-        <div class="num">To the paisa</div>
-        <div class="lbl">balances checked retailer by retailer against the old books before go-live</div>
+        <div class="n">To the paisa</div>
+        <div class="l">balances checked retailer by retailer against the old books before go-live</div>
       </div>
       <div class="stat">
-        <div class="num">Multi-zone</div>
-        <div class="lbl">separate zones, rates, invoice series and cut-offs under one office</div>
+        <div class="n">Multi-zone</div>
+        <div class="l">separate zones, rates, cut-offs and invoice series under one office</div>
       </div>
     </div>
-
-    <p class="quote">Years of existing data — retailers, balances, rates, transaction
+    <div class="rule"></div>
+    <p class="quote rise">Years of existing data — retailers, balances, rates, transaction
     history — were migrated out of the old FoxPro system and reconciled retailer by
-    retailer, until a zone's closing balances agreed with the old books exactly.
-    Your history comes with you; you do not start again from zero.</p>
+    retailer, until a zone's closing balances agreed with the old books exactly. Your
+    history comes with you; you do not start again from zero.</p>
   </div>
 </section>
 
-<section id="how">
+<section id="onboarding">
   <div class="wrap">
-    <p class="eyebrow">How you get it</p>
-    <h2>Your own copy — your data stays yours.</h2>
-    <p class="sub">KshirSetu is not a consumer app and it is not a shared pool of
-    everyone's data. Each distributor runs a separate instance with its own database
-    and its own web address. Nothing is shared between distributors.</p>
-
-    <ol class="steps">
-      <li><b>We talk first.</b> Zones, products, rate structure, how your trips and
-      cut-offs work today, and what your existing data looks like.</li>
-      <li><b>Your instance is set up</b> with your firm's name, GSTIN and zones — and
-      your existing retailers and balances are imported and reconciled against your
-      current books.</li>
-      <li><b>Your staff get logins</b> with roles, so demand entry, approvals and rate
-      changes stay in the right hands.</li>
-      <li><b>Your retailers install the app</b> and enter the dairy code you give
-      them, then sign in with the retailer code and password you issue. It points them
-      at your instance, and only yours.</li>
+    <div class="sec-head rise">
+      <p class="eyebrow">Getting started</p>
+      <h2>Your own copy. Your data stays yours.</h2>
+      <p class="sub">KshirSetu is not a consumer app and not a shared pool of everyone's
+      data. Each distributor runs a separate instance with its own database and its own
+      web address. Nothing is shared between distributors.</p>
+    </div>
+    <ol class="steps rise">
+      <li><b>We talk first</b> Zones, products, your rate structure, how trips and
+      cut-offs work today, and what shape your existing data is in.</li>
+      <li><b>Your instance is set up</b> With your firm's name, GSTIN and zones — then
+      your retailers and balances are imported and reconciled against your current
+      books.</li>
+      <li><b>Your staff get logins</b> With roles, so demand entry, approvals and rate
+      changes stay in the right hands, and every rate change leaves a trail.</li>
+      <li><b>Your retailers install the app</b> They enter the dairy code you give them
+      and sign in with the retailer code and password you issue. It points them at
+      your instance, and only yours.</li>
     </ol>
   </div>
 </section>
 
-<section id="contact">
+<section id="faq" style="background:var(--surface);border-top:1px solid var(--line-2)">
   <div class="wrap">
-    <p class="eyebrow">Get in touch</p>
-    <h2>Interested in running it?</h2>
-    <p class="sub">If you distribute milk and this sounds like your day, write or call.
-    Tell us roughly how many retailers you supply and what you use today — that is
-    enough to start.</p>
-
-    <div class="contact-card">
-      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">Message on WhatsApp</a>
-      <div class="rows">
-        <div class="row">
-          <div class="k">Phone</div>
-          <div class="v"><a href="tel:+918591137805">+91 85911 37805</a></div>
-        </div>
-        <div class="row">
-          <div class="k">Email</div>
-          <div class="v"><a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a></div>
-        </div>
-        <div class="row">
-          <div class="k">Address</div>
-          <div class="v">New Colony, Ranipur Road, Beladullah,<br>Darbhanga, Bihar, India</div>
-        </div>
-      </div>
+    <div class="sec-head rise">
+      <p class="eyebrow">Questions</p>
+      <h2>What distributors ask first.</h2>
     </div>
-
-    <p class="hi" style="margin-top:1.4rem">दूध वितरकों के लिए बनाया गया — ऑर्डर, गाड़ी की लोडिंग, जमा, बकाया और खाता विवरण, सब एक जगह। बात करने के लिए ऊपर दिए नंबर पर संपर्क करें।</p>
+    <div class="faq rise">
+      <details>
+        <summary>Is my data mixed with other distributors' data?</summary>
+        <p>No. Each distributor gets a separate instance — its own database, its own
+        web address, its own logins. Your retailers, rates and balances are not visible
+        to anyone else, and there is no shared pool to opt out of.</p>
+      </details>
+      <details>
+        <summary>Can my existing data be moved in?</summary>
+        <p>Yes, and it should be. Retailers, opening balances, rates and transaction
+        history have already been migrated out of an old FoxPro system and reconciled
+        against the old books before go-live. Registers and spreadsheets can be brought
+        in the same way. The migration is checked with you before anything goes live.</p>
+      </details>
+      <details>
+        <summary>My retailers are not technical. Will they actually use the app?</summary>
+        <p>The app does four things — place an order, record a deposit, see the account
+        statement, read messages from you — in Hindi or English. And nothing depends on
+        the retailer using it: the office can enter or correct any retailer's order, so
+        a shop with no smartphone works exactly as before.</p>
+      </details>
+      <details>
+        <summary>Does it work on a slow connection?</summary>
+        <p>It needs an internet connection, but the screens are deliberately light and
+        the app is built for ordinary mobile data at the shop. The office side runs in
+        a normal browser on the computer you already have.</p>
+      </details>
+      <details>
+        <summary>What about GST and my accountant?</summary>
+        <p>The system issues tax invoices with per-zone financial-year numbering and
+        HSN codes, and produces a GST summary. Sale, bank and cash books export in a
+        Tally-compatible format, so your accountant carries on filing the way they do
+        today.</p>
+      </details>
+      <details>
+        <summary>Can staff quietly change a settled day?</summary>
+        <p>No. A day can be closed and frozen, after which it cannot be edited; rate
+        changes and approvals are recorded with who did them and when; and permissions
+        are per role, so demand entry, deposit approval and rate changes can sit with
+        different people.</p>
+      </details>
+      <details>
+        <summary>How long does setting up take?</summary>
+        <p>A new instance can be running in about an hour. The real work is your data —
+        importing retailers and balances and agreeing that they match your books — and
+        that depends on the state of the records you are coming from.</p>
+      </details>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="links">
-      <a href="./privacy.html">Privacy Policy</a>
-      <a href="./delete-account.html">Account &amp; Data Deletion</a>
-      <a href="#contact">Contact</a>
+<section class="cta-band" id="contact">
+  <div class="wrap"><div class="cta-panel cta-box">
+    <div class="rise">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Interested in running it?</h2>
+      <p>If you distribute milk and this sounds like your day, write or call. Tell us
+      roughly how many retailers you supply and what you use today — that is enough to
+      start the conversation.</p>
+      <div class="contact-lines">
+        <a href="tel:+918591137805">+91 85911 37805</a>
+        <a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a>
+        <span>New Colony, Ranipur Road, Beladullah, Darbhanga, Bihar</span>
+      </div>
+      <p class="hindi" style="margin:1.2rem 0 0;color:var(--muted);font-size:.97rem;max-width:52ch">
+        दूध वितरकों के लिए बनाया गया — ऑर्डर, गाड़ी की लोडिंग, जमा, बकाया और खाता विवरण, सब एक जगह। बात करने के लिए ऊपर दिए नंबर पर संपर्क करें।
+      </p>
     </div>
-    <div>&copy; 2026 KshirSetu · Darbhanga, Bihar, India</div>
+    <div class="cta-actions rise">
+      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Message on WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="mailto:kshirsetu@gmail.com?subject=KshirSetu%20enquiry">Email us</a>
+    </div>
+  </div></div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="" width="256" height="256">
+          <span class="name">KshirSetu</span>
+        </div>
+        <p>Management software for milk distributors and the retailers they supply.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#platform">What it covers</a></li>
+          <li><a href="#proof">Why it holds up</a></li>
+          <li><a href="#onboarding">Getting started</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+          <li><a href="./delete-account.html">Account &amp; data deletion</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/918591137805">WhatsApp +91 85911 37805</a></li>
+          <li><a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a></li>
+          <li>New Colony, Ranipur Road,<br>Beladullah, Darbhanga, Bihar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 KshirSetu. All rights reserved.</span>
+      <span>Made in Darbhanga, Bihar, India</span>
+    </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var els = document.querySelectorAll('.rise');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    setTimeout(function () { els.forEach(function (e) { e.classList.add('in'); }); }, 2500);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 
 </body>
 </html>
