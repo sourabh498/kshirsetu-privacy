@@ -1,19 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KshirSetu — Milk distribution management software</title>
-<meta name="description" content="KshirSetu runs the whole milk distribution day: retailer orders, trip-wise loading, deposits, retailer ledgers and GST invoices — with an Android app for every retailer you supply.">
-<link rel="canonical" href="https://kshirsetu.in/">
+<title>KshirSetu — Milk Distribution Management Software for Distributors &amp; Dairies</title>
+<meta name="description" content="KshirSetu is milk distribution management software for distributors and dairies in India: retailer orders, trip-wise loading, deposits, credit limits, retailer ledgers and GST invoices, with an Android app for retailers.">
+<link rel="canonical" href="https://www.kshirsetu.in/">
+<meta name="robots" content="index, follow">
 <meta property="og:site_name" content="KshirSetu">
-<meta property="og:title" content="KshirSetu — Milk distribution management software">
-<meta property="og:description" content="Orders, loading, deposits, retailer ledgers and GST invoices — with an Android app for the retailers you supply.">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="KshirSetu — Milk Distribution Management Software">
+<meta property="og:description" content="Orders, trip-wise loading, deposits, credit control, retailer ledgers and GST invoices — with an Android app for the retailers you supply.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kshirsetu.in/">
-<meta property="og:image" content="https://kshirsetu.in/assets/og.png">
+<meta property="og:url" content="https://www.kshirsetu.in/">
+<meta property="og:image" content="https://www.kshirsetu.in/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KshirSetu — milk distribution management software">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0A4FC7">
 <link rel="icon" href="./assets/favicon-32.png" sizes="32x32">
@@ -22,330 +25,220 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script>document.documentElement.className+=" js";</script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    color-scheme: light;
-    --brand: #0A4FC7;
-    --brand-dark: #072F73;
-    --brand-deep: #051E4D;
-    --green: #2E9E3E;
-    --ink: #0E1726;
-    --ink-2: #33415A;
-    --muted: #5D6E88;
-    --line: #E3E9F2;
-    --line-2: #EEF2F8;
-    --bg: #FFFFFF;
-    --surface: #F6F9FD;
-    --radius: 14px;
-    --shadow-sm: 0 1px 2px rgba(14,23,38,.05), 0 2px 8px rgba(14,23,38,.04);
-    --shadow-md: 0 2px 6px rgba(14,23,38,.06), 0 12px 32px rgba(10,79,199,.08);
-    --shadow-lg: 0 8px 20px rgba(14,23,38,.08), 0 30px 60px rgba(7,47,115,.16);
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-    --deva: "Noto Sans Devanagari", "Inter", system-ui, sans-serif;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 400 16.5px/1.65 var(--sans);
-    -webkit-font-smoothing: antialiased;
-  }
-  img { max-width: 100%; display: block; }
-  a { color: var(--brand); }
-  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
-  h1, h2, h3, .display { font-family: var(--display); letter-spacing: -.022em; }
-  h2 { font-size: clamp(1.6rem, 3.4vw, 2.15rem); font-weight: 800; margin: 0 0 .75rem; line-height: 1.2; }
-  h3 { font-weight: 700; }
-  .eyebrow {
-    font-family: var(--sans); font-weight: 600; font-size: .78rem;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--brand);
-    margin: 0 0 .7rem;
-  }
-  .sub { color: var(--muted); font-size: 1.06rem; margin: 0 0 2.4rem; max-width: 56ch; }
-  section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
-  .sec-head { max-width: 60rem; }
-
-  /* ---------------- buttons ---------------- */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
-    font-family: var(--sans); font-weight: 600; font-size: .97rem;
-    padding: .8rem 1.35rem; border-radius: 10px; text-decoration: none;
-    border: 1px solid transparent; cursor: pointer; white-space: nowrap;
-    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-  }
-  .btn svg { width: 1.05em; height: 1.05em; flex: none; }
-  .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 1px 2px rgba(7,47,115,.25), 0 8px 20px rgba(10,79,199,.22); }
-  .btn-primary:hover { background: #0947B2; transform: translateY(-1px); }
-  .btn-wa { background: #1FAA53; color: #fff; box-shadow: 0 1px 2px rgba(9,80,40,.2), 0 8px 20px rgba(31,170,83,.22); }
-  .btn-wa:hover { background: #1B9549; transform: translateY(-1px); }
-  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
-  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
-  .btn-on-dark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.28); }
-  .btn-on-dark:hover { background: rgba(255,255,255,.18); }
-  .btn-sm { padding: .58rem 1rem; font-size: .9rem; }
-
-  /* ---------------- header ---------------- */
-  .site-head {
-    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.88);
-    backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-2);
-  }
-  .site-head .wrap { display: flex; align-items: center; gap: 1.5rem; height: 4.4rem; }
-  .logo { display: flex; align-items: center; gap: .62rem; text-decoration: none; margin-right: auto; }
-  .logo img { width: 2.2rem; height: 2.2rem; border-radius: .55rem; }
-  .logo .name {
-    font-family: var(--display); font-weight: 800; font-size: 1.22rem;
-    color: var(--brand-dark); letter-spacing: -.02em;
-  }
-  .site-nav { display: none; gap: 1.9rem; }
-  .site-nav a { color: var(--ink-2); text-decoration: none; font-size: .95rem; font-weight: 500; }
-  .site-nav a:hover { color: var(--brand); }
-  @media (min-width: 56rem) { .site-nav { display: flex; } }
-
-  /* ---------------- hero ---------------- */
-  .hero {
-    position: relative; overflow: hidden; padding: clamp(3rem, 6vw, 4.75rem) 0 clamp(3.5rem, 7vw, 5.5rem);
-    background:
-      radial-gradient(1100px 520px at 78% -8%, #E8F0FE 0%, rgba(232,240,254,0) 62%),
-      linear-gradient(180deg, #FBFCFE 0%, #FFFFFF 70%);
-    border-bottom: 1px solid var(--line-2);
-  }
-  .hero-grid { display: grid; gap: clamp(2.5rem, 5vw, 3.5rem); align-items: center; }
-  @media (min-width: 62rem) { .hero-grid { grid-template-columns: 1.02fr 1fr; } }
-  .hero h1 {
-    font-size: clamp(1.95rem, 4.2vw, 2.85rem); font-weight: 800; line-height: 1.14;
-    margin: 0 0 1.1rem; color: var(--ink);
-  }
-  .hero h1 .hl { color: var(--brand); display: block; }
-  .hero .lede { font-size: 1.12rem; color: var(--ink-2); margin: 0 0 2rem; max-width: 34rem; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.6rem; }
-  .hero-note { display: flex; align-items: center; gap: .55rem; font-size: .92rem; color: var(--muted); }
-  .hero-note svg { width: 1.05rem; height: 1.05rem; color: var(--green); flex: none; }
-  .pill {
-    display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.4rem;
-    padding: .34rem .78rem .34rem .42rem; border-radius: 999px;
-    background: #fff; border: 1px solid var(--line);
-    font-size: .84rem; font-weight: 500; color: var(--ink-2); box-shadow: var(--shadow-sm);
-  }
-  .pill b { color: var(--brand-dark); font-weight: 600; white-space: nowrap; }
-  .pill .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--green); margin-left: .3rem; }
-
-  /* ---------------- product mock ---------------- */
-  .mock { position: relative; }
-  @media (min-width: 34rem) { .mock { padding-right: 8rem; } }
-  .app {
-    border-radius: 16px; background: #fff; border: 1px solid var(--line);
-    box-shadow: var(--shadow-lg); overflow: hidden;
-  }
-  .app-bar {
-    display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem;
-    background: linear-gradient(180deg, #0B57D0, #0A3F9E); color: #fff;
-  }
-  .app-bar .t { font-family: var(--display); font-weight: 700; font-size: .88rem; letter-spacing: -.01em; }
-  .app-bar .d { margin-left: auto; font-size: .74rem; opacity: .82; }
-  .app-bar .lg { width: 1.25rem; height: 1.25rem; border-radius: .3rem; }
-  .app-body { padding: .95rem; }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin-bottom: .85rem; }
-  .tile { background: var(--surface); border: 1px solid var(--line-2); border-radius: 9px; padding: .6rem .65rem; }
-  .tile .k { font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; }
-  .tile .v { font-family: var(--display); font-weight: 800; font-size: 1.02rem; color: var(--ink); margin-top: .12rem; letter-spacing: -.02em; }
-  .tile .v span { font-size: .66rem; font-weight: 600; color: var(--muted); }
-  .rowline { display: flex; align-items: center; gap: .55rem; padding: .45rem .15rem; border-bottom: 1px solid var(--line-2); font-size: .76rem; }
-  .rowline:last-child { border-bottom: 0; }
-  .rowline .nm { font-weight: 600; color: var(--ink-2); min-width: 3.6rem; }
-  .rowline .veh { color: var(--muted); font-size: .7rem; }
-  .rowline .qty { margin-left: auto; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .bar { height: .32rem; border-radius: 99px; background: var(--line); overflow: hidden; width: 4.6rem; flex: none; }
-  .bar i { display: block; height: 100%; background: var(--brand); border-radius: 99px; }
-  .bar.full i { background: var(--green); }
-  .caption { font-size: .58rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-weight: 600; margin: 0 0 .4rem; }
-  .phone {
-    position: absolute; right: 0; bottom: 1.2rem; width: 8rem;
-    border-radius: 16px; border: 5px solid #16233A; background: #16233A;
-    box-shadow: var(--shadow-lg); overflow: hidden; display: none;
-  }
-  @media (min-width: 34rem) { .phone { display: block; } }
-  .phone .scr { background: #fff; border-radius: 11px; overflow: hidden; }
-  .phone .ph-top { background: linear-gradient(180deg, #0B57D0, #0A3F9E); color: #fff; padding: .5rem .55rem; }
-  .phone .ph-top .h { font-family: var(--deva); font-weight: 600; font-size: .68rem; }
-  .phone .ph-top .s { font-size: .55rem; opacity: .82; }
-  .phone .ph-b { padding: .5rem .55rem .6rem; }
-  .phone .pr { display: flex; align-items: center; gap: .3rem; font-size: .58rem; padding: .26rem 0; border-bottom: 1px solid var(--line-2); }
-  .phone .pr .n { color: var(--ink-2); font-family: var(--deva); }
-  .phone .pr .q { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .phone .save { margin-top: .5rem; background: var(--green); color: #fff; text-align: center; border-radius: 6px; padding: .34rem; font-size: .58rem; font-weight: 700; font-family: var(--deva); }
-
-  /* ---------------- trust strip ---------------- */
-  .strip { background: var(--surface); border-bottom: 1px solid var(--line-2); padding: 1.15rem 0; }
-  .strip ul {
-    list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap;
-    gap: .6rem 2.1rem; justify-content: center;
-    font-size: .88rem; color: var(--ink-2); font-weight: 500;
-  }
-  .strip li { display: flex; align-items: center; gap: .45rem; }
-  .strip svg { width: 1rem; height: 1rem; color: var(--brand); flex: none; }
-
-  /* ---------------- cards ---------------- */
-  .two { display: grid; gap: 1.15rem; }
-  @media (min-width: 48rem) { .two { grid-template-columns: 1fr 1fr; } }
-  .grid3 { display: grid; gap: 1.15rem; }
-  @media (min-width: 44rem) { .grid3 { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 64rem) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
-  .card {
-    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 1.5rem 1.55rem; box-shadow: var(--shadow-sm);
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #D3DEEE; }
-  .card h3 { margin: 0 0 .45rem; font-size: 1.06rem; color: var(--ink); }
-  .card p { margin: 0; color: var(--muted); font-size: .97rem; }
-  .ico {
-    width: 2.5rem; height: 2.5rem; border-radius: 10px; display: grid; place-items: center;
-    background: #EAF1FE; color: var(--brand); margin-bottom: 1rem;
-  }
-  .ico svg { width: 1.28rem; height: 1.28rem; }
-  .ico.g { background: #E7F6EA; color: var(--green); }
-  .card.big { padding: 1.8rem 1.85rem; }
-  .card.big h3 { font-size: 1.22rem; margin-bottom: .55rem; }
-  .card.big p { font-size: 1rem; }
-  .tagrow { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
-  .tag {
-    font-size: .78rem; font-weight: 600; color: var(--ink-2);
-    background: var(--surface); border: 1px solid var(--line-2);
-    padding: .25rem .6rem; border-radius: 99px;
-  }
-
-  /* ---------------- dark proof band ---------------- */
-  .band {
-    background:
-      radial-gradient(900px 420px at 15% 0%, #0B57D0 0%, rgba(11,87,208,0) 60%),
-      linear-gradient(160deg, #072F73 0%, #051E4D 100%);
-    color: #fff;
-  }
-  .band h2 { color: #fff; }
-  .band .sub { color: #B8CBEA; }
-  .band .eyebrow { color: #7FB0FF; }
-  .stats { display: grid; gap: 2rem; margin-top: .5rem; }
-  @media (min-width: 44rem) { .stats { grid-template-columns: repeat(3, 1fr); gap: 2.4rem; } }
-  .stat .n { font-family: var(--display); font-weight: 800; font-size: 2.15rem; letter-spacing: -.03em; line-height: 1.05; color: #fff; }
-  .stat .l { color: #B8CBEA; font-size: .95rem; margin-top: .45rem; }
-  .band .rule { height: 1px; background: rgba(255,255,255,.16); margin: 2.6rem 0; }
-  .band .quote { max-width: 60ch; color: #DCE7F9; font-size: 1.04rem; margin: 0; }
-
-  /* ---------------- steps ---------------- */
-  ol.steps { counter-reset: s; list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
-  @media (min-width: 52rem) { ol.steps { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 2.4rem; } }
-  ol.steps li { counter-increment: s; padding-left: 3.2rem; position: relative; color: var(--muted); font-size: .99rem; }
-  ol.steps li::before {
-    content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -.15rem;
-    font-family: var(--display); font-weight: 800; font-size: .85rem; color: var(--brand);
-    background: #EAF1FE; width: 2.3rem; height: 2.3rem; border-radius: 8px;
-    display: grid; place-items: center;
-  }
-  ol.steps li b { display: block; color: var(--ink); font-family: var(--display); font-size: 1.05rem; margin-bottom: .2rem; font-weight: 700; }
-
-  /* ---------------- faq ---------------- */
-  .faq { max-width: 52rem; }
-  details {
-    border-bottom: 1px solid var(--line); padding: 1.15rem 0;
-  }
-  details summary {
-    cursor: pointer; list-style: none; display: flex; align-items: flex-start; gap: 1rem;
-    font-family: var(--display); font-weight: 700; font-size: 1.03rem; color: var(--ink);
-  }
-  details summary::-webkit-details-marker { display: none; }
-  details summary::after {
-    content: "+"; margin-left: auto; color: var(--brand); font-size: 1.35rem;
-    line-height: 1; font-weight: 600; flex: none; transition: transform .2s ease;
-  }
-  details[open] summary::after { content: "−"; }
-  details p { margin: .8rem 0 0; color: var(--muted); font-size: .99rem; max-width: 62ch; }
-
-  /* ---------------- cta ---------------- */
-  .cta-band { background: var(--surface); border-top: 1px solid var(--line-2); }
-  .cta-panel {
-    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow-md); padding: clamp(1.8rem, 4vw, 2.8rem);
-  }
-  .cta-box { display: grid; gap: 1.8rem; align-items: center; }
-  @media (min-width: 54rem) { .cta-box { grid-template-columns: 1.35fr auto; gap: 2.5rem; } }
-  .cta-box h2 { margin-bottom: .5rem; }
-  .cta-box p { color: var(--muted); margin: 0; max-width: 46ch; }
-  .cta-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
-  @media (min-width: 54rem) { .cta-actions { flex-direction: column; align-items: stretch; min-width: 14rem; } }
-  .contact-lines { display: flex; flex-wrap: wrap; gap: .4rem 1.8rem; margin-top: 1.3rem; font-size: .96rem; }
-  .contact-lines a { text-decoration: none; font-weight: 600; }
-  .contact-lines span { color: var(--muted); }
-
-  /* ---------------- footer ---------------- */
-  .site-foot { background: #071A3D; color: #A9BEE0; padding: 3.5rem 0 2.2rem; font-size: .93rem; }
-  .foot-grid { display: grid; gap: 2.2rem; }
-  @media (min-width: 50rem) { .foot-grid { grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 2.5rem; } }
-  .site-foot h4 {
-    font-family: var(--display); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em;
-    color: #fff; margin: 0 0 .9rem; font-weight: 700;
-  }
-  .site-foot a { color: #A9BEE0; text-decoration: none; }
-  .site-foot a:hover { color: #fff; }
-  .site-foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
-  .foot-brand .logo { margin-bottom: .9rem; }
-  .foot-brand .logo .name { color: #fff; }
-  .foot-brand p { margin: 0; max-width: 30ch; line-height: 1.6; }
-  .foot-bottom {
-    margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.12);
-    display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; justify-content: space-between;
-    font-size: .87rem; color: #8AA2C8;
-  }
-  .hindi { font-family: var(--deva); }
-
-  /* ---------------- motion ---------------- */
-  .js .rise { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-  .js .rise.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .js .rise { opacity: 1; transform: none; transition: none; }
-    .card:hover, .btn:hover { transform: none; }
-  }
-  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
-  section[id] { scroll-margin-top: 5rem; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css?v=2">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.kshirsetu.in/#org",
+      "name": "KshirSetu",
+      "url": "https://www.kshirsetu.in/",
+      "logo": "https://www.kshirsetu.in/assets/logo.png",
+      "email": "kshirsetu@gmail.com",
+      "telephone": "+91-85911-37805",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "New Colony, Ranipur Road, Beladullah",
+        "addressLocality": "Darbhanga",
+        "addressRegion": "Bihar",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+91-85911-37805",
+        "email": "kshirsetu@gmail.com",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.kshirsetu.in/#website",
+      "url": "https://www.kshirsetu.in/",
+      "name": "KshirSetu",
+      "publisher": { "@id": "https://www.kshirsetu.in/#org" },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.kshirsetu.in/#software",
+      "name": "KshirSetu",
+      "url": "https://www.kshirsetu.in/",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Milk distribution management software",
+      "operatingSystem": "Web browser, Android",
+      "description": "Milk distribution management software for milk distributors and dairies: retailer orders, trip-wise loading, deposits, credit limits and dues collection, retailer ledgers, GST invoices and a retailer Android app.",
+      "featureList": [
+        "Retailer milk and product orders with per-zone cut-offs",
+        "Trip-wise loading by whole crates with vehicle capacity warnings",
+        "Deposits with UTR and receipt photo, checked against bank statements",
+        "Per-retailer credit limits, supply holds and dues collection plans",
+        "Daily retailer ledgers and statements on WhatsApp and email",
+        "GST tax invoices and Tally-compatible export",
+        "Android app for retailers in Hindi and English"
+      ],
+      "publisher": { "@id": "https://www.kshirsetu.in/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.kshirsetu.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my data mixed with other distributors' data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Each distributor gets a separate instance — its own database, its own web address, its own logins. Your retailers, rates and balances are not visible to anyone else, and there is no shared pool to opt out of."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my existing data be moved in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and it should be. Retailers, opening balances, rates and transaction history have already been migrated out of an old FoxPro system and reconciled against the old books before go-live. Registers and spreadsheets can be brought in the same way. The migration is checked with you before anything goes live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I stop a retailer who already owes too much?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Each retailer can have a credit limit set to warn or to block, so an order that would push the shop past its limit is flagged or refused when it is entered. You can also put one shop's milk or product supply on hold, or agree a plan to collect old dues in daily instalments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My retailers are not technical. Will they actually use the app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The app does four things — place an order, record a deposit, see the account statement, read messages from you — in Hindi or English. And nothing depends on the retailer using it: the office can enter or correct any retailer's order, so a shop with no smartphone works exactly as before."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it run on our old office computers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The office side runs in a web browser, and it is built to work on older Windows 7 computers whose browser can no longer be updated. There is nothing to install."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on a slow connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It needs an internet connection, but the screens are deliberately light and the app is built for ordinary mobile data at the shop. The office side runs in a normal browser on the computer you already have."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about GST and my accountant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The system issues tax invoices with per-zone financial-year numbering and HSN codes, and produces a GST summary. Sale, bank and cash books export in a Tally-compatible format, so your accountant carries on filing the way they do today."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can staff quietly change a settled day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A day can be closed and frozen, after which it cannot be edited; rate changes and approvals are recorded with who did them and when; and permissions are per role, so demand entry, deposit approval and rate changes can sit with different people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a dairy buy it for its distributors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A dairy can take KshirSetu on behalf of the distributors it supplies. Each distributor still runs its own instance with its own data, so one distributor never sees another's retailers or balances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does setting up take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A new instance can be running in about an hour. The real work is your data — importing retailers and balances and agreeing that they match your books — and that depends on the state of the records you are coming from."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I see a demo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Message us on WhatsApp or email with your business name, your city and roughly how many retailers you supply, and we will fix a time to walk you through the office screens and the retailer app."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
-
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h13v10H1zM14 10h4l3 3v4h-7z"/><circle cx="5.5" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+  <symbol id="i-ledger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3z"/><path d="M8 9h8"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18M9 7V4h6v3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-steps" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20v-4M10 20v-7M14 20v-10M18 20V5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v2"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>
+  <symbol id="i-keys" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 15h10"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
+</svg>
 <header class="site-head">
   <div class="wrap">
-    <a class="logo" href="#top">
+    <a class="logo" href="./">
       <img src="./assets/logo.png" alt="KshirSetu logo" width="256" height="256">
       <span class="name">KshirSetu</span>
     </a>
-    <nav class="site-nav">
-      <a href="#platform">Platform</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="./features.html">Features</a>
+      <a href="#credit">Credit control</a>
       <a href="#proof">Why it holds up</a>
-      <a href="#onboarding">Getting started</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="#contact">Talk to us</a>
+    <a class="btn btn-primary btn-sm" href="#demo">Schedule a demo</a>
   </div>
 </header>
 
+<main>
 <div class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
       <span class="pill"><span class="dot"></span> <b>In daily use</b> — running a live milk distribution business</span>
-      <h1>The milk leaves at 4&nbsp;a.m. <span class="hl">The accounts should already be right.</span></h1>
-      <p class="lede">KshirSetu is management software for milk distributors — retailer
-      orders, trip-wise loading, deposits, ledgers and GST invoices in one system,
-      with an Android app for every retailer you supply.</p>
+      <h1><span class="kicker">Milk distribution management software</span>The milk leaves at 4&nbsp;a.m. <span class="hl">The accounts should already be right.</span></h1>
+      <p class="lede">KshirSetu runs the whole day of a milk distributor — retailer
+      orders, trip-wise loading, deposits, credit and dues, ledgers and GST invoices in
+      one system, with an Android app for every retailer you supply.</p>
       <div class="hero-cta">
-        <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-          Message on WhatsApp
-        </a>
-        <a class="btn btn-ghost" href="#platform">See what it covers</a>
+        <a class="btn btn-primary" href="#demo">Schedule a demo <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="./features.html">See all features</a>
       </div>
       <p class="hero-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <svg aria-hidden="true"><use href="#i-check"/></svg>
         Your own instance and your own database — nothing shared with another distributor.
       </p>
     </div>
@@ -354,7 +247,7 @@
       <div class="app">
         <div class="app-bar">
           <img class="lg" src="./assets/logo.png" alt="" width="256" height="256">
-          <span class="t">Daily demand — Zone DJ</span>
+          <span class="t">Daily demand — Zone North</span>
           <span class="d">Trip-wise · today</span>
         </div>
         <div class="app-body">
@@ -372,12 +265,12 @@
       </div>
       <div class="phone">
         <div class="scr">
-          <div class="ph-top"><div class="h">कल का ऑर्डर</div><div class="s">R-1042 · 6:00 PM</div></div>
+          <div class="ph-top"><div class="h">Tomorrow's order</div><div class="s">R-1042 · cut-off 6:00 PM</div></div>
           <div class="ph-b">
-            <div class="pr"><span class="n">फुल क्रीम</span><span class="q">40</span></div>
-            <div class="pr"><span class="n">टोंड दूध</span><span class="q">65</span></div>
-            <div class="pr"><span class="n">दही 400g</span><span class="q">24</span></div>
-            <div class="save">ऑर्डर भेजें</div>
+            <div class="pr"><span class="n">Full cream</span><span class="q">40</span></div>
+            <div class="pr"><span class="n">Toned milk</span><span class="q">65</span></div>
+            <div class="pr"><span class="n">Curd 400g</span><span class="q">24</span></div>
+            <div class="save">Send order</div>
           </div>
         </div>
       </div>
@@ -388,11 +281,11 @@
 <div class="strip">
   <div class="wrap">
     <ul>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> GST invoices &amp; Tally export</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Hindi &amp; English</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Statements on WhatsApp</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your data migrated in</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Android app for retailers</li>
+      <li><svg aria-hidden="true"><use href="#i-check"/></svg> GST invoices &amp; Tally export</li>
+      <li><svg aria-hidden="true"><use href="#i-check"/></svg> Credit limits per retailer</li>
+      <li><svg aria-hidden="true"><use href="#i-check"/></svg> Statements on WhatsApp</li>
+      <li><svg aria-hidden="true"><use href="#i-check"/></svg> Hindi &amp; English retailer app</li>
+      <li><svg aria-hidden="true"><use href="#i-check"/></svg> Runs on older office PCs</li>
     </ul>
   </div>
 </div>
@@ -409,16 +302,16 @@
     </div>
     <div class="two rise">
       <div class="card big">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-monitor"/></svg></div>
         <h3>For the office</h3>
         <p>A web system on the computer, covering everything the counter and the
         accountant do in a day — demand entry, loading sheets, deposit approvals,
         rates, ledgers, invoices and staff accounts — with role-based permissions so
         each person only touches their own work.</p>
-        <div class="tagrow"><span class="tag">Demand</span><span class="tag">Loading</span><span class="tag">Deposits</span><span class="tag">Ledgers</span><span class="tag">GST</span></div>
+        <div class="tagrow"><span class="tag">Demand</span><span class="tag">Loading</span><span class="tag">Deposits</span><span class="tag">Credit</span><span class="tag">Ledgers</span><span class="tag">GST</span></div>
       </div>
       <div class="card big">
-        <div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+        <div class="ico g"><svg aria-hidden="true"><use href="#i-phone"/></svg></div>
         <h3>For your retailers</h3>
         <p>An Android app for the shop. The retailer places tomorrow's order before the
         cut-off, records a deposit with its reference and receipt photo, and sees an
@@ -430,7 +323,7 @@
   </div>
 </section>
 
-<section id="platform" style="background:var(--surface);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
+<section id="platform" class="sec-alt">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">The platform</p>
@@ -440,65 +333,178 @@
     </div>
     <div class="grid3 rise">
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-cal"/></svg></div>
         <h3>Daily demand</h3>
         <p>Retailers order before a cut-off you set per zone. The office sees the day's
         total by product and by trip, and can enter or correct any retailer's order
         itself.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h13v10H1zM14 10h4l3 3v4h-7z"/><circle cx="5.5" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-truck"/></svg></div>
         <h3>Loading &amp; distribution</h3>
-        <p>Trip-wise split of the day's load, what each vehicle carries against the
-        capacity it really has, and printable loading and collection sheets for the
-        driver.</p>
+        <p>Trip-wise split of the day's load in whole crates, what each vehicle carries
+        against the capacity it really has, and every distribution sheet printed in
+        one go.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-card"/></svg></div>
         <h3>Deposits</h3>
         <p>The retailer records a payment with its UTR and receipt photo; the office
         approves it against the bank statement — with a checker that reads the
         statement file and matches the references for you.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-        <h3>Retailer accounts</h3>
-        <p>A running daily ledger per retailer, opening to closing, with balances,
-        outstanding dues, agreed repayment plans, and a watchlist for the ones sliding
-        the wrong way.</p>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-gauge"/></svg></div>
+        <h3>Credit &amp; dues</h3>
+        <p>A credit limit for each retailer that warns or blocks at the moment of the
+        order, a hold on one shop's supply, and dues collected in daily instalments.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-ledger"/></svg></div>
+        <h3>Retailer accounts</h3>
+        <p>A running daily ledger per retailer, opening to closing, with balances,
+        outstanding dues and a watchlist for the ones sliding the wrong way.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-doc"/></svg></div>
         <h3>GST &amp; invoicing</h3>
         <p>Tax invoices with per-zone financial-year numbering and HSN codes, a GST
         summary report, and a Tally-compatible export of the sale, bank and cash
         books.</p>
       </div>
       <div class="card">
-        <div class="ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3z"/><path d="M8 9h8"/></svg></div>
+        <div class="ico g"><svg aria-hidden="true"><use href="#i-chat"/></svg></div>
         <h3>Statements that reach people</h3>
         <p>Account statements go out as a PDF over WhatsApp or email — one retailer or
         a whole zone at once — so the monthly reconciliation stops being a phone
         call.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18M9 7V4h6v3"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-box"/></svg></div>
         <h3>Crates, damage &amp; stock</h3>
         <p>Crates issued and returned per retailer, damage and shortage entries, and
         stock and purchase reports against what the dairy actually supplied.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></svg></div>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-user"/></svg></div>
         <h3>Vehicles &amp; staff</h3>
         <p>Diesel entries against odometer readings with per-vehicle mileage, plus
         staff attendance, wage rates and salary payouts for drivers and helpers.</p>
       </div>
+    </div>
+    <a class="more-link rise" href="./features.html">See every feature in detail <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<section id="credit">
+  <div class="wrap split">
+    <div class="rise">
+      <p class="eyebrow">Credit &amp; dues control</p>
+      <h2>Credit is the business. Control it shop by shop.</h2>
+      <p class="sub" style="margin-bottom:2rem">Most of what a distributor loses goes out
+      on credit, one order at a time. KshirSetu checks a retailer's balance at the moment
+      the order is placed — not at month-end, when it is too late.</p>
+      <ul class="points">
+        <li>
+          <div class="ico"><svg aria-hidden="true"><use href="#i-gauge"/></svg></div>
+          <div><b>A credit limit for every retailer</b>
+          <span>Set each shop to Off, Warn or Block. Warn shows the exposure to whoever
+          enters the order; Block stops an order that would take the shop past its
+          limit. Only an admin can override, and every override is recorded.</span></div>
+        </li>
+        <li>
+          <div class="ico"><svg aria-hidden="true"><use href="#i-pause"/></svg></div>
+          <div><b>Hold supply to one shop</b>
+          <span>Stop milk, products or both for a single retailer — a bounced cheque, a
+          dispute — without closing their account or app login. The reason stays with
+          your staff; the shop is simply told to contact you.</span></div>
+        </li>
+        <li>
+          <div class="ico"><svg aria-hidden="true"><use href="#i-steps"/></svg></div>
+          <div><b>Collect old dues in instalments</b>
+          <span>Agree a plan to clear a balance over a set number of days. The rule is
+          easy to explain at the counter: pay for today's order plus the day's
+          instalment, and the next order goes through. Dues are only marked cleared on
+          money you have approved.</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rise" aria-hidden="true">
+      <div class="app">
+        <div class="app-bar">
+          <img class="lg" src="./assets/logo.png" alt="" width="256" height="256">
+          <span class="t">Retailer account</span>
+          <span class="d">Financials</span>
+        </div>
+        <div class="acct">
+          <div class="acct-head">
+            <div><div class="who">Gupta General Store</div><div class="code">R-1042 · Zone North</div></div>
+            <div class="bal"><div class="k">Balance due</div><div class="v">₹34,400</div></div>
+          </div>
+          <div class="meter">
+            <div class="top"><span>Credit used</span><b>₹34,400 of ₹40,000</b></div>
+            <div class="track"><i></i></div>
+          </div>
+          <div class="acct-row"><span class="lbl">Enforce limit</span><span class="r"><span class="seg"><span>Off</span><span class="on">Warn</span><span>Block</span></span></span></div>
+          <div class="acct-row"><span class="lbl">Milk supply</span><span class="r"><span class="chip ok">Allowed</span></span></div>
+          <div class="acct-row"><span class="lbl">Products</span><span class="r"><span class="chip hold">On hold</span></span></div>
+          <div class="plan">
+            <div class="t">Dues plan · 30 days</div>
+            <div class="sum"><span>Pay today</span><b>₹7,200</b><span>= order ₹6,200 + instalment ₹1,000</span></div>
+            <div class="dots"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="m"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="office" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Built for a real dairy office</p>
+      <h2>Fast for the counter. Safe for the owner.</h2>
+      <p class="sub">The details that decide whether software survives its first month
+      in a busy distribution office.</p>
+    </div>
+    <div class="grid3 rise">
       <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Control &amp; oversight</h3>
-        <p>Day-close and freeze so a settled day cannot be edited quietly, an audit
-        trail on rates and approvals, comparison and performance reports, and push
-        reminders when a retailer has not ordered.</p>
+        <div class="ico"><svg aria-hidden="true"><use href="#i-monitor"/></svg></div>
+        <h3>Runs on the computers you have</h3>
+        <p>The office side runs in an ordinary browser, and is built to work on older
+        Windows 7 machines that can no longer be upgraded. No new hardware to buy.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-keys"/></svg></div>
+        <h3>Keyboard-first entry</h3>
+        <p>Retailer code, quantities, Enter, next. Order entry is built for speed on a
+        keyboard, with guards on dates and numbers that catch slips before they are
+        saved.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-print"/></svg></div>
+        <h3>Every sheet in one print</h3>
+        <p>Every zone's and every trip's milk distribution sheet for the day, sent to
+        the printer as one job before the vehicles leave.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-bell"/></svg></div>
+        <h3>Reminders that go out on their own</h3>
+        <p>Retailers who have not ordered get a reminder before the cut-off, and the
+        office gets a count per zone — with an off switch and a "skip today".</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-key"/></svg></div>
+        <h3>A password alone is not enough</h3>
+        <p>A retailer's app works only on a phone activated with a one-time code, so a
+        shared or stolen password does not open the account on another device.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></div>
+        <h3>Staff see only their zones</h3>
+        <p>Roles decide who enters demand, approves deposits or changes rates, and each
+        staff member can be limited to the zones they handle. Settled days are frozen.</p>
       </div>
     </div>
   </div>
@@ -556,10 +562,20 @@
       and sign in with the retailer code and password you issue. It points them at
       your instance, and only yours.</li>
     </ol>
+    <div class="callout rise" style="margin-top:3rem">
+      <div>
+        <p class="eyebrow">For dairies</p>
+        <h2>Buying for your distributors?</h2>
+        <p>A dairy can take KshirSetu on behalf of the distributors it supplies. Each
+        distributor still gets its own instance and its own data, set up and migrated
+        one at a time — talk to us about rolling it out across your network.</p>
+      </div>
+      <a class="btn btn-primary" href="#demo">Schedule a demo</a>
+    </div>
   </div>
 </section>
 
-<section id="faq" style="background:var(--surface);border-top:1px solid var(--line-2)">
+<section id="faq" class="sec-alt">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">Questions</p>
@@ -580,11 +596,24 @@
         in the same way. The migration is checked with you before anything goes live.</p>
       </details>
       <details>
+        <summary>Can I stop a retailer who already owes too much?</summary>
+        <p>Yes. Each retailer can have a credit limit set to warn or to block, so an
+        order that would push the shop past its limit is flagged or refused when it is
+        entered. You can also put one shop's milk or product supply on hold, or agree a
+        plan to collect old dues in daily instalments.</p>
+      </details>
+      <details>
         <summary>My retailers are not technical. Will they actually use the app?</summary>
         <p>The app does four things — place an order, record a deposit, see the account
         statement, read messages from you — in Hindi or English. And nothing depends on
         the retailer using it: the office can enter or correct any retailer's order, so
         a shop with no smartphone works exactly as before.</p>
+      </details>
+      <details>
+        <summary>Will it run on our old office computers?</summary>
+        <p>Yes. The office side runs in a web browser, and it is built to work on older
+        Windows 7 computers whose browser can no longer be updated. There is nothing to
+        install.</p>
       </details>
       <details>
         <summary>Does it work on a slow connection?</summary>
@@ -607,41 +636,56 @@
         different people.</p>
       </details>
       <details>
+        <summary>Can a dairy buy it for its distributors?</summary>
+        <p>Yes. A dairy can take KshirSetu on behalf of the distributors it supplies.
+        Each distributor still runs its own instance with its own data, so one
+        distributor never sees another's retailers or balances.</p>
+      </details>
+      <details>
         <summary>How long does setting up take?</summary>
         <p>A new instance can be running in about an hour. The real work is your data —
         importing retailers and balances and agreeing that they match your books — and
         that depends on the state of the records you are coming from.</p>
       </details>
+      <details>
+        <summary>How do I see a demo?</summary>
+        <p>Message us on WhatsApp or email with your business name, your city and
+        roughly how many retailers you supply, and we will fix a time to walk you
+        through the office screens and the retailer app.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<section class="cta-band" id="contact">
+<section class="cta-band" id="demo">
   <div class="wrap"><div class="cta-panel cta-box">
     <div class="rise">
-      <p class="eyebrow">Get in touch</p>
-      <h2>Interested in running it?</h2>
-      <p>If you distribute milk and this sounds like your day, write or call. Tell us
-      roughly how many retailers you supply and what you use today — that is enough to
-      start the conversation.</p>
+      <p class="eyebrow">Schedule a demo</p>
+      <h2>See KshirSetu run a distribution day.</h2>
+      <p>A live walk-through for distributors and dairies. Tell us your business name,
+      your city and roughly how many retailers you supply, and we will fix a time.</p>
+      <ul class="demo-list">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg> The office screens and the retailer app, end to end</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg> Your questions on zones, rates, trips and credit</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg> What moving your existing records in would involve</li>
+      </ul>
       <div class="contact-lines">
         <a href="tel:+918591137805">+91 85911 37805</a>
         <a href="mailto:kshirsetu@gmail.com">kshirsetu@gmail.com</a>
         <span>New Colony, Ranipur Road, Beladullah, Darbhanga, Bihar</span>
       </div>
-      <p class="hindi" style="margin:1.2rem 0 0;color:var(--muted);font-size:.97rem;max-width:52ch">
-        दूध वितरकों के लिए बनाया गया — ऑर्डर, गाड़ी की लोडिंग, जमा, बकाया और खाता विवरण, सब एक जगह। बात करने के लिए ऊपर दिए नंबर पर संपर्क करें।
-      </p>
     </div>
     <div class="cta-actions rise">
-      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20am%20a%20milk%20distributor%20and%20I%20would%20like%20to%20know%20more%20about%20KshirSetu.">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-        Message on WhatsApp
+      <a class="btn btn-wa" href="https://wa.me/918591137805?text=Hello%2C%20I%20would%20like%20to%20schedule%20a%20demo%20of%20KshirSetu.%0ABusiness%20name%3A%20%0ACity%3A%20%0ARetailers%20we%20supply%20%28approx.%29%3A%20">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>
+        Schedule on WhatsApp
       </a>
-      <a class="btn btn-ghost" href="mailto:kshirsetu@gmail.com?subject=KshirSetu%20enquiry">Email us</a>
+      <a class="btn btn-ghost" href="mailto:kshirsetu@gmail.com?subject=Demo%20request%20-%20KshirSetu&amp;body=Hello%2C%0A%0AI%20would%20like%20to%20schedule%20a%20demo%20of%20KshirSetu.%0A%0ABusiness%20name%3A%0ACity%3A%0ARetailers%20we%20supply%20%28approx.%29%3A%0APhone%3A%0A">Request by email</a>
+      <a class="btn btn-ghost" href="tel:+918591137805">Call us</a>
     </div>
   </div></div>
 </section>
+</main>
 
 <footer class="site-foot">
   <div class="wrap">
@@ -651,15 +695,16 @@
           <img src="./assets/logo.png" alt="" width="256" height="256">
           <span class="name">KshirSetu</span>
         </div>
-        <p>Management software for milk distributors and the retailers they supply.</p>
+        <p>Milk distribution management software for distributors, dairies and the retailers they supply.</p>
       </div>
       <div>
-        <h4>Platform</h4>
+        <h4>Product</h4>
         <ul>
-          <li><a href="#platform">What it covers</a></li>
-          <li><a href="#proof">Why it holds up</a></li>
-          <li><a href="#onboarding">Getting started</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="./features.html">All features</a></li>
+          <li><a href="./#credit">Credit &amp; dues control</a></li>
+          <li><a href="./#proof">Why it holds up</a></li>
+          <li><a href="./#faq">FAQ</a></li>
+          <li><a href="#demo">Schedule a demo</a></li>
         </ul>
       </div>
       <div>
@@ -687,13 +732,10 @@
 
 <script>
   (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var els = document.querySelectorAll('.rise');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function (e) { e.classList.add('in'); });
-      return;
-    }
-    setTimeout(function () { els.forEach(function (e) { e.classList.add('in'); }); }, 2500);
+    function all() { els.forEach(function (e) { e.classList.add('in'); }); }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { all(); return; }
+    setTimeout(all, 2500);
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
